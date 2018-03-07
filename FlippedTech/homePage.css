@@ -6,6 +6,9 @@
 	height: 30px;
 }
 
+/*
+Formatting for banner buttons
+*/
 button {
 	border: none;
 	background-color: lightgrey;
@@ -17,6 +20,9 @@ button {
 	transition: all .3s;
 }
 
+/*
+Formatting for header 1
+*/
 h1 {
 	text-align: center;
 	line-height: 1.1;
