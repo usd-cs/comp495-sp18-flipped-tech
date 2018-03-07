@@ -18,17 +18,17 @@ for(var i = 0; i < buttons.length; i++)
 
 
 btnHome.addEventListener("click", function(){
-	alert("Home Button Pressed");
+	alert("Home Button Pressed(functionality not set)");
 });
 
 btnCourses.addEventListener("click", function(){
-	alert("Courses Button Pressed");
+	alert("Courses Button Pressed(functionality not set)");
 })
 
 btnBookmarks.addEventListener("click", function(){
-	alert("Bookmarks Button Pressed");
+	alert("Bookmarks Button Pressed(functionality not set)");
 })
 
 btnCalendar.addEventListener("click", function(){
-	alert("Calendar Button Pressed");
+	alert("Calendar Button Pressed(functionality not set)");
 })
