@@ -1,0 +1,1 @@
+This folder will hold all of our partials. Partials are partial bits of code that are constantly being reused to be stored here. We can then create a file for this code and then whenever we need to use it, we simply just include it. It allows for dryer code
