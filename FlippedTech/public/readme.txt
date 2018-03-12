@@ -1,0 +1,1 @@
+This folder contains css files that you wish to apply to your ejs files as you would with traditional html files
