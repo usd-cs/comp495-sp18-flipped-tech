@@ -23,7 +23,16 @@ var commentsArr = [
     {username:"erickjperez", time:"3:34", date:"12-12-2018", comment:"surprise it's me"},
     {username:"mroth", time:"3:35", date:"1-2-2019", comment:"Second Comment"},
 ];
+/*
+var lectureComments = [
+    {course: "COMP490", lecture: lectures}
+    {course: "COMM310", lecture: lectures}
 
+];
+*/
+/*
+lectureComments[course: "COMP490"][lecture:num:1]
+*/
 //allows for code minimization
 //when giving a file, just give name. Does not need .ejs
 app.set("view engine", "ejs");
@@ -39,7 +48,7 @@ app.get("/", function(req, res){
 });
 
 app.get("/lecturePage", function(req, res){
-    res.render("lecturePage", {comments: comments});
+    res.render("lecturePage", {commentsArr: commentsArr});
 });
 
 app.post("/newComment", function(req, res){
@@ -75,6 +84,14 @@ app.listen(3000, function(){
     console.log("server has started");
 });
 
+function getComments(course, lecture)
+{
+
+}
+
+//function takes in the date and time of creation and returns the time as a string
+//represented as hh:mm
+//parameters time: raw time/date creation string. Not user friendly. Needs to be parsed
 function getTime(time){
 
     var hours = time.getHours();
@@ -83,6 +100,9 @@ function getTime(time){
     return currTime;
 }
 
+//function takes in the date and time of creation and returns the date as a string
+//represented as mm:dd:yyyy
+//parameters time: raw time/date creation string. Not user friendly. Needs to be parsed
 function getDate(time){
     var month = time.getMonth();
     var day = time.getDate();
