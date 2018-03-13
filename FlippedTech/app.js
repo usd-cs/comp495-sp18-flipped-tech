@@ -19,6 +19,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 //for now will just be an array
 var comments = "";
 
+var commentsArr = [
+    {username:"erickjperez", time:"3:34", date:"12-12-2018", comment:"surprise it's me"},
+    {username:"mroth", time:"3:35", date:"1-2-2019", comment:"Second Comment"},
+];
+
 //allows for code minimization
 //when giving a file, just give name. Does not need .ejs
 app.set("view engine", "ejs");
@@ -41,8 +46,12 @@ app.post("/newComment", function(req, res){
 	//data taken from pages must be parsed into an object
 	//before being used in regular js
 	var newComment = req.body.comment;
-	console.log(newComment);
+    var username = req.body.username;
+    var time = new Date();
 	comments = newComment;
+    var commentEntry = {username: username, time:getTime(time), date:getDate(time), comment:newComment};
+    console.log(commentEntry);
+    commentsArr.push(commentEntry);
     res.redirect("/lecturePage");
 });
 
@@ -65,3 +74,19 @@ app.get("*", function(req, res){
 app.listen(3000, function(){
     console.log("server has started");
 });
+
+function getTime(time){
+
+    var hours = time.getHours();
+    var minutes = time.getMinutes();
+    var currTime = hours+":"+minutes;
+    return currTime;
+}
+
+function getDate(time){
+    var month = time.getMonth();
+    var day = time.getDate();
+    var year = time.getFullYear();
+    var currDate = month + "-" + day + "-" + year;
+    return currDate;
+}
