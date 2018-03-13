@@ -1,4 +1,18 @@
 <!-- Page will contain form for teachers to create lectures for their respective classes. Input includes course, lecture number, lecture title, lecture video and lecture description-->
 
-
-<h1>LECTURE UPLOAD PAGE</h1>
+<html>
+<head>
+<title>LectureUpload</title>
+<h1> Video Lecture Upload Form </h1>
+<form action="/lectureUpload" method="POST">
+	Name of Lecture:<br>
+	<input type="text" name="lecture"><br>
+	Name of Course:<br>
+	<input type="text" name="course"><br>
+	Link to Lecture Video:<br>
+	<input type="text" name="videolink" size="35"><br>
+	Describtion of Lecture:<br>
+	<textarea name="describtion" cols="90" rows="5" required="required"></textarea><br>
+	<br>
+	<input type="submit" value="Submit">
+</form>
