@@ -15,6 +15,10 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
 
+//will need to send this DB once setup
+//for now will just be an array
+var comments = "";
+
 //allows for code minimization
 //when giving a file, just give name. Does not need .ejs
 app.set("view engine", "ejs");
@@ -30,10 +34,15 @@ app.get("/", function(req, res){
 });
 
 app.get("/lecturePage", function(req, res){
-    res.render("lecturePage");
+    res.render("lecturePage", {comments: comments});
 });
 
 app.post("/newComment", function(req, res){
+	//data taken from pages must be parsed into an object
+	//before being used in regular js
+	var newComment = req.body.comment;
+	console.log(newComment);
+	comments = newComment;
     res.redirect("/lecturePage");
 });
 
