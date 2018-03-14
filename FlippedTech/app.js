@@ -20,8 +20,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 var comments = "";
 
 var commentsArr = [
-    {username:"erickjperez", time:"3:34", date:"12-12-2018", comment:"surprise it's me"},
-    {username:"mroth", time:"3:35", date:"1-2-2019", comment:"Second Comment"},
+    {username:"erickjperez", time:"3:34", date:"12-12-2018", commentData:"surprise it's me"},
+    {username:"mroth", time:"3:35", date:"1-2-2019", commentData:"Second Comment"},
 ];
 /*
 var lectureComments = [
@@ -58,7 +58,7 @@ app.post("/newComment", function(req, res){
     var username = req.body.username;
     var time = new Date();
 	comments = newComment;
-    var commentEntry = {username: username, time:getTime(time), date:getDate(time), comment:newComment};
+    var commentEntry = {username: username, time:getTime(time), date:getDate(time), commentData:newComment};
     console.log(commentEntry);
     commentsArr.push(commentEntry);
     res.redirect("/lecturePage");
