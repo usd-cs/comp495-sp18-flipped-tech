@@ -7,18 +7,22 @@
 <h3><%=title%></h3>
 <h5>Description</h5>
 <h3>Video</h3>
-<div style = "border-bottom: 1px solid black; font-weight: bold; font-size: 30px">Comments</div>
-<% commentsArr.forEach(function(comment){ %>
-	<div style = "border-bottom: 1px solid black">
-	<%var date = comment.date + " " + comment.time;%>
-	<div><%=date%></div>
-	<div><strong><%=comment.username%>: </strong><%=comment.commentData%></div>
-	</div>
+<div style = "margin: auto; width: 50%; border: 3px solid black; padding: 10px;">
+	<div style = "border-bottom: 1px solid black; font-weight: bold; font-size: 30px">Comments</div>
 	
-<%});%>
-<!- this form will handle the comments, textbox that will be sent to app.js page to be handled->
-<form action = "/newComment" method = "POST">
-	<input type = "text" name = "username" placeholder = "Enter Username Here">
-	<input type = "text" name = "comment" placeholder = "Enter Comment Here">
-	<button>Submit</button>
-</form>
+	<!- Parse through data given to display all comments->
+	<% commentsArr.forEach(function(comment){ %>
+		<div style = "border-bottom: 1px solid black">
+			<%var date = comment.date + " " + comment.time;%>
+			<div><%=date%></div>
+			<div><strong><%=comment.username%>: </strong><%=comment.commentData%></div>
+		</div>
+	
+	<%});%>
+
+	<!- this form will handle the comments, textbox that will be sent to app.js page to be handled->
+	<form action = "/newComment" method = "POST">
+		<input type = "text" name = "comment" placeholder = "Enter Comment Here">
+		<button>Submit</button>
+	</form>
+</div>

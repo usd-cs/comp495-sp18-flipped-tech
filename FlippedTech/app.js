@@ -15,24 +15,16 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
 
-//will need to send this DB once setup
-//for now will just be an array
-var comments = "";
-
+/*
+dummy data for now until we can hook it up to a DB
+*/
 var commentsArr = [
-    {username:"erickjperez", time:"3:34", date:"12-12-2018", commentData:"surprise it's me"},
-    {username:"mroth", time:"3:35", date:"1-2-2019", commentData:"Second Comment"},
+    {username:"eromney", time:"3:34", date:"3-12-2018", commentData:"Fast forward to 3:04. It's my favorite part"},
+    {username:"mroth", time:"3:35", date:"3-12-2019", commentData:"^^What he said"},
+    {username:"jwahl", time:"1:10", date:"3-13-2019", commentData:"So why don't you just cast it?"},
+    {username:"nicholaswahl", time:"1:35", date:"3-13-2019", commentData:"Idk"}
 ];
-/*
-var lectureComments = [
-    {course: "COMP490", lecture: lectures}
-    {course: "COMM310", lecture: lectures}
 
-];
-*/
-/*
-lectureComments[course: "COMP490"][lecture:num:1]
-*/
 //allows for code minimization
 //when giving a file, just give name. Does not need .ejs
 app.set("view engine", "ejs");
@@ -55,10 +47,10 @@ app.post("/newComment", function(req, res){
 	//data taken from pages must be parsed into an object
 	//before being used in regular js
 	var newComment = req.body.comment;
-    var username = req.body.username;
     var time = new Date();
 	comments = newComment;
-    var commentEntry = {username: username, time:getTime(time), date:getDate(time), commentData:newComment};
+    //automatically use username "erickjperez" until real users are added
+    var commentEntry = {username: "erickjperez", time:getTime(time), date:getDate(time), commentData:newComment};
     console.log(commentEntry);
     commentsArr.push(commentEntry);
     res.redirect("/lecturePage");
@@ -83,11 +75,6 @@ app.get("*", function(req, res){
 app.listen(3000, function(){
     console.log("server has started");
 });
-
-function getComments(course, lecture)
-{
-
-}
 
 //function takes in the date and time of creation and returns the time as a string
 //represented as hh:mm
