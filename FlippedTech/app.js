@@ -15,6 +15,16 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
 
+/*
+dummy data for now until we can hook it up to a DB
+*/
+var commentsArr = [
+    {username:"eromney", time:"3:34", date:"3-12-2018", commentData:"Fast forward to 3:04. It's my favorite part"},
+    {username:"mroth", time:"3:35", date:"3-12-2019", commentData:"^^What he said"},
+    {username:"jwahl", time:"1:10", date:"3-13-2019", commentData:"So why don't you just cast it?"},
+    {username:"nicholaswahl", time:"1:35", date:"3-13-2019", commentData:"Idk"}
+];
+
 //allows for code minimization
 //when giving a file, just give name. Does not need .ejs
 app.set("view engine", "ejs");
@@ -30,10 +40,19 @@ app.get("/", function(req, res){
 });
 
 app.get("/lecturePage", function(req, res){
-    res.render("lecturePage");
+    res.render("lecturePage", {commentsArr: commentsArr});
 });
 
 app.post("/newComment", function(req, res){
+	//data taken from pages must be parsed into an object
+	//before being used in regular js
+	var newComment = req.body.comment;
+    var time = new Date();
+	comments = newComment;
+    //automatically use username "erickjperez" until real users are added
+    var commentEntry = {username: "erickjperez", time:getTime(time), date:getDate(time), commentData:newComment};
+    console.log(commentEntry);
+    commentsArr.push(commentEntry);
     res.redirect("/lecturePage");
 });
 
@@ -56,3 +75,25 @@ app.get("*", function(req, res){
 app.listen(3000, function(){
     console.log("server has started");
 });
+
+//function takes in the date and time of creation and returns the time as a string
+//represented as hh:mm
+//parameters time: raw time/date creation string. Not user friendly. Needs to be parsed
+function getTime(time){
+
+    var hours = time.getHours();
+    var minutes = time.getMinutes();
+    var currTime = hours+":"+minutes;
+    return currTime;
+}
+
+//function takes in the date and time of creation and returns the date as a string
+//represented as mm:dd:yyyy
+//parameters time: raw time/date creation string. Not user friendly. Needs to be parsed
+function getDate(time){
+    var month = time.getMonth();
+    var day = time.getDate();
+    var year = time.getFullYear();
+    var currDate = month + "-" + day + "-" + year;
+    return currDate;
+}
