@@ -19,10 +19,34 @@ app.use(bodyParser.urlencoded({extended: true}));
 dummy data for now until we can hook it up to a DB
 */
 var commentsArr = [
-    {username:"eromney", time:"3:34", date:"3-12-2018", commentData:"Fast forward to 3:04. It's my favorite part"},
-    {username:"mroth", time:"3:35", date:"3-12-2019", commentData:"^^What he said"},
-    {username:"jwahl", time:"1:10", date:"3-13-2019", commentData:"So why don't you just cast it?"},
-    {username:"nicholaswahl", time:"1:35", date:"3-13-2019", commentData:"Idk"}
+    [
+        {username:"eromney", time:"3:34", date:"3-12-2018", commentData:"Fast forward to 3:04. It's my favorite part"},
+        {username:"mroth", time:"3:35", date:"3-12-2019", commentData:"^^What he said"},
+        {username:"jwahl", time:"1:10", date:"3-13-2019", commentData:"So why don't you just cast it?"},
+        {username:"nicholaswahl", time:"1:35", date:"3-13-2019", commentData:"Idk"}
+    ],
+    [
+        {username:"eromney", time:"3:34", date:"3-12-2018", commentData:"Fast forward to 3:04. It's my favorite part"},
+        {username:"mroth", time:"3:35", date:"3-12-2019", commentData:"^^What he said"},
+        {username:"jwahl", time:"1:10", date:"3-13-2019", commentData:"So why don't you just cast it?"},
+        {username:"nicholaswahl", time:"1:35", date:"3-13-2019", commentData:"Idk"}
+    ],
+    [
+        {username:"eromney", time:"3:34", date:"3-12-2018", commentData:"Fast forward to 3:04. It's my favorite part"},
+        {username:"mroth", time:"3:35", date:"3-12-2019", commentData:"^^What he said"},
+        {username:"jwahl", time:"1:10", date:"3-13-2019", commentData:"So why don't you just cast it?"},
+        {username:"nicholaswahl", time:"1:35", date:"3-13-2019", commentData:"Idk"}
+    ]
+
+];
+
+var allComments = [];
+
+
+var count = 3;
+var allLectures = [{num: 0, lecture: "Abstractions", course: "COMP310", videoURL: "youtube.com", videoDesc: "Abstraction is my favorite"},
+                   {num: 1, lecture: "Nondeterminism", course: "COMP490", videoURL: "instagram.com", videoDesc: "non nevermind"},
+                   {num: 2, lecture: "Vegans are cool", course: "HEALTH101", videoURL: "PETA.com", videoDesc: "Veganism is the move"}
 ];
 
 //allows for code minimization
@@ -48,12 +72,16 @@ app.post("/newComment", function(req, res){
 	//before being used in regular js
 	var newComment = req.body.comment;
     var time = new Date();
+    var numLecture = req.body.num;
 	comments = newComment;
     //automatically use username "erickjperez" until real users are added
     var commentEntry = {username: "erickjperez", time:getTime(time), date:getDate(time), commentData:newComment};
     console.log(commentEntry);
-    commentsArr.push(commentEntry);
-    res.redirect("/lecturePage");
+    commentsArr[numLecture].push(commentEntry);
+    
+    console.log(numLecture);
+    //res.send("comment added");
+    res.render("lecturePage", {lecture: allLectures[numLecture], commentsArr: commentsArr[numLecture]});
 });
 
 app.get("/lectureUpload", function(req, res){
@@ -61,8 +89,27 @@ app.get("/lectureUpload", function(req, res){
 });
 
 app.post("/newLecture", function(req, res){
-    res.redirect("/lectureUpload");
+    var lecture = req.body.lecture;
+    var course = req.body.course;
+    var videoURL = req.body.videolink;
+    var videoDesc = req.body.describtion;
+    var lectureContent = {num: count++, lecture: lecture, course: course, videoURL: videoURL, videoDesc: videoDesc};
+    var time = new Date();
+    commentsArr.push([]);
+    //commentsArr[count].push({username: "Admin", time:getTime(time), date:getDate(time), commentData:"Beginning of Comments"});
+    allLectures.push(lectureContent);
+    console.log(allLectures);
+    res.redirect("/lectures");
 });
+
+app.get("/lectures", function(req,res){
+    res.render("lectures",{allLectures: allLectures});
+});
+
+app.get("/lectures/:num", function(req,res){
+    var numLecture = req.params.num;
+    res.render("lecturePage", {lecture: allLectures[numLecture], commentsArr: commentsArr[numLecture]});
+})
 
 //for get requests for any not defined
 //order matters. Must be after the other routes

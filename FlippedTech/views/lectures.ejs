@@ -1,0 +1,13 @@
+<h1>Lectures found here</h1>
+
+<% allLectures.forEach(function(oneLecture){ %>
+			<div><%=oneLecture.num%></div>
+			<div><%=oneLecture.course%></div>
+			<div><%=oneLecture.lecture%></div>
+			<div><%=oneLecture.videoURL%></div>
+			<div><%=oneLecture.videoDesc%></div>
+			<a href = "/lectures/<%= oneLecture.num%>" class = "btn btn-primary">View</a>
+			<br>
+		</div>
+	
+	<%});%>
