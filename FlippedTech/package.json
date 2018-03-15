@@ -2,15 +2,24 @@
   "name": "flippedtech",
   "version": "1.0.0",
   "description": "Flipped Tech is a web app that supports teachers who use a flipped classroom style, where lectures are held outside of class online so that students can view and learn at their own pace",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Taylor Coury, Jack Miller, Seth Nakanishi, Erick Perez",
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
     "ejs": "^2.5.7",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "knex": "^0.14.4",
+    "pg": "^7.4.1",
+    "sqlite3": "^3.1.13"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.2"
   }
 }
