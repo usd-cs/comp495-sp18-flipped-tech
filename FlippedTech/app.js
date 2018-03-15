@@ -20,33 +20,27 @@ dummy data for now until we can hook it up to a DB
 */
 var commentsArr = [
     [
-        {username:"eromney", time:"3:34", date:"3-12-2018", commentData:"Fast forward to 3:04. It's my favorite part"},
-        {username:"mroth", time:"3:35", date:"3-12-2019", commentData:"^^What he said"},
-        {username:"jwahl", time:"1:10", date:"3-13-2019", commentData:"So why don't you just cast it?"},
-        {username:"nicholaswahl", time:"1:35", date:"3-13-2019", commentData:"Idk"}
+        {username:"alexanderalvarez", time:"3:34", date:"3-12-2018", commentData:"What advantage does this have over java?"},
+        {username:"mroth", time:"3:35", date:"3-12-2019", commentData:"I'm still unsure about Gang of Four"}
     ],
     [
-        {username:"eromney", time:"3:34", date:"3-12-2018", commentData:"Fast forward to 3:04. It's my favorite part"},
-        {username:"mroth", time:"3:35", date:"3-12-2019", commentData:"^^What he said"},
-        {username:"jwahl", time:"1:10", date:"3-13-2019", commentData:"So why don't you just cast it?"},
-        {username:"nicholaswahl", time:"1:35", date:"3-13-2019", commentData:"Idk"}
+        {username:"eromney", time:"3:34", date:"3-12-2018", commentData:"Do we need to wait for all threads to finish working?"},
+        {username:"mroth", time:"3:35", date:"3-12-2019", commentData:"Yes, Ethan"},
+        {username:"nicholaswahl", time:"1:10", date:"3-13-2019", commentData:"Don't forget that you must create threads at the beginning"},
+        {username:"mayamccaulife", time:"1:35", date:"3-13-2019", commentData:"What a great lecture. Thanks"}
     ],
     [
-        {username:"eromney", time:"3:34", date:"3-12-2018", commentData:"Fast forward to 3:04. It's my favorite part"},
-        {username:"mroth", time:"3:35", date:"3-12-2019", commentData:"^^What he said"},
-        {username:"jwahl", time:"1:10", date:"3-13-2019", commentData:"So why don't you just cast it?"},
-        {username:"nicholaswahl", time:"1:35", date:"3-13-2019", commentData:"Idk"}
+        {username:"sgarza", time:"3:34", date:"3-12-2018", commentData:"The lecture really begins at the 1:30 mark"}
     ]
 
 ];
 
-var allComments = [];
-
-
+//count is just temporary to keep track of how many lectures we have. Once DB is setup we will have to refactor
+//all of the code
 var count = 3;
-var allLectures = [{num: 0, lecture: "Abstractions", course: "COMP310", videoURL: "youtube.com", videoDesc: "Abstraction is my favorite"},
-                   {num: 1, lecture: "Nondeterminism", course: "COMP490", videoURL: "instagram.com", videoDesc: "non nevermind"},
-                   {num: 2, lecture: "Vegans are cool", course: "HEALTH101", videoURL: "PETA.com", videoDesc: "Veganism is the move"}
+var allLectures = [{num: 0, lecture: "Python Design Patterns", course: "COMP305", videoURL: "https://www.youtube.com/watch?v=bsyjSW46TDg", videoDesc: "This leture describes what design patterns are when discussing python. This includes gang of four and singleton"},
+                   {num: 1, lecture: "Parallel Programming", course: "COMP280", videoURL: "https://www.youtube.com/watch?v=q7sgzDH1cR8", videoDesc: "What is Parallel Programming. Click to learn more"},
+                   {num: 2, lecture: "Java 101 Basics", course: "COMP150", videoURL: "https://www.youtube.com/watch?v=2Xa3Y4xz8_s", videoDesc: "Here is a quick rundown of java and what to expect as you continue with the course"}
 ];
 
 //allows for code minimization
@@ -80,7 +74,7 @@ app.post("/newComment", function(req, res){
     commentsArr[numLecture].push(commentEntry);
     
     console.log(numLecture);
-    //res.send("comment added");
+    //new comment will then add comment to array and reroute to same lecture page
     res.render("lecturePage", {lecture: allLectures[numLecture], commentsArr: commentsArr[numLecture]});
 });
 
@@ -96,7 +90,6 @@ app.post("/newLecture", function(req, res){
     var lectureContent = {num: count++, lecture: lecture, course: course, videoURL: videoURL, videoDesc: videoDesc};
     var time = new Date();
     commentsArr.push([]);
-    //commentsArr[count].push({username: "Admin", time:getTime(time), date:getDate(time), commentData:"Beginning of Comments"});
     allLectures.push(lectureContent);
     console.log(allLectures);
     res.redirect("/lectures");

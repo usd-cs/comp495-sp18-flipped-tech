@@ -1,13 +1,12 @@
-<h1>Lectures found here</h1>
+<!- This page contains a list of all the lectures a student has to view. In addition to this listing, you can also click the lecture to view it and it will reroute you to a different page->
+<h1>All Lectures</h1>
 
 <% allLectures.forEach(function(oneLecture){ %>
-			<div><%=oneLecture.num%></div>
-			<div><%=oneLecture.course%></div>
-			<div><%=oneLecture.lecture%></div>
-			<div><%=oneLecture.videoURL%></div>
+			<div><strong><%=oneLecture.course%></strong></div>
+			<div><strong><%=oneLecture.lecture%></strong></div>
 			<div><%=oneLecture.videoDesc%></div>
 			<a href = "/lectures/<%= oneLecture.num%>" class = "btn btn-primary">View</a>
-			<br>
+			<p></p>
 		</div>
 	
 	<%});%>
