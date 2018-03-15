@@ -6,15 +6,20 @@
 <h1>LECTURE PAGE</h1>
 <a href = "/lectures" class = "btn btn-primary">Back</a>
 
-<h2><%=lecture.lecture%>
+<h2><%=lecture.course%></h3>
 <h3><%=lecture.lecture%></h3>
 <h5><%=lecture.videoDesc%></h5>
+<h5><%=lecture.videoURL%></h5>
 
 <h3>Video</h3>
 	<div class="leftpane">
+
+	<iframe width="560" height="315" src="<%=lecture.videoURL%>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+	<!--
 		<iframe width="500" height="420"
-			src="<%=lecture.videoURL%>">
+			src="https://youtube.com/embed/<%=lecture.videoURL%>?autoplay=1&controls=0&showinfo=0&autohide=1">
 		</iframe>
+		-->
 	</div>
 	
 

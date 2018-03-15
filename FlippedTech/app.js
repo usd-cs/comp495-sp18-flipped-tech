@@ -38,9 +38,9 @@ var commentsArr = [
 //count is just temporary to keep track of how many lectures we have. Once DB is setup we will have to refactor
 //all of the code
 var count = 3;
-var allLectures = [{num: 0, lecture: "Python Design Patterns", course: "COMP305", videoURL: "https://www.youtube.com/watch?v=bsyjSW46TDg", videoDesc: "This leture describes what design patterns are when discussing python. This includes gang of four and singleton"},
-                   {num: 1, lecture: "Parallel Programming", course: "COMP280", videoURL: "https://www.youtube.com/watch?v=q7sgzDH1cR8", videoDesc: "What is Parallel Programming. Click to learn more"},
-                   {num: 2, lecture: "Java 101 Basics", course: "COMP150", videoURL: "https://www.youtube.com/watch?v=2Xa3Y4xz8_s", videoDesc: "Here is a quick rundown of java and what to expect as you continue with the course"}
+var allLectures = [{num: 0, lecture: "Python Design Patterns", course: "COMP305", videoURL: "https://www.youtube.com/embed/vNHpsC5ng_E", videoDesc: "This leture describes what design patterns are when discussing python. This includes gang of four and singleton"},
+                   {num: 1, lecture: "Parallel Programming", course: "COMP280", videoURL: "https://www.youtube.com/embed/q7sgzDH1cR8", videoDesc: "What is Parallel Programming. Click to learn more"},
+                   {num: 2, lecture: "Java 101 Basics", course: "COMP150", videoURL: "https://www.youtube.com/embed/2Xa3Y4xz8_s", videoDesc: "Here is a quick rundown of java and what to expect as you continue with the course"}
 ];
 
 //allows for code minimization
