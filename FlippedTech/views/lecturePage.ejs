@@ -1,13 +1,24 @@
-<!-- page for the lectures. It will embed the video and also display the lecture name, description and comment section -->
+<!-- page for the lectures. It will embed the video and also display the lecture name, description and comment section
+	The data we have currently is dummy data and will be read in from the data base later on -->
 
 <%var title = "alkdf"; %>
 
 <h1>LECTURE PAGE</h1>
 <a href = "/lectures" class = "btn btn-primary">Back</a>
 
+<h2><%=lecture.lecture%>
 <h3><%=lecture.lecture%></h3>
 <h5><%=lecture.videoDesc%></h5>
+
 <h3>Video</h3>
+	<div class="leftpane">
+		<iframe width="500" height="420"
+			src="<%=lecture.videoURL%>">
+		</iframe>
+	</div>
+	
+
+<h3>Comments</h3>
 <div style = "margin: auto; width: 50%; border: 3px solid black; padding: 10px;">
 	<div style = "border-bottom: 1px solid black; font-weight: bold; font-size: 30px">Comments</div>
 	
@@ -28,3 +39,4 @@
 		<button>Submit</button>
 	</form>
 </div>
+
