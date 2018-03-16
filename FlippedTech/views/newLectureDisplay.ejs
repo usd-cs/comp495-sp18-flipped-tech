@@ -1,0 +1,21 @@
+<!-- 
+This page will display to the professor the info he/she has submitted
+Once DB is setup, it will have confirmation to add or not and when to display
+the lecture to their class
+-->
+
+<h3>Here is the info for the lecture you have submitted</h3>
+
+<div><strong>Course: </strong><%=lecture.course%></div>
+<div><strong>Lecture Title: </strong><%=lecture.lecture%></div>
+<iframe width="560" height="315" src="<%=lecture.videoURL%>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<div><strong>Video Description: </strong><%=lecture.videoDesc%></div>
+
+<form action = "/newLectureDisplay/confirm" method = "POST">
+	<button>Confirm</button>
+</form>
+
+<form action = "/newLectureDisplay/cancel" method = "POST">
+	<button>Cancel</button>
+</form>
+

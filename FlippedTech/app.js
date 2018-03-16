@@ -92,8 +92,29 @@ app.post("/newLecture", function(req, res){
     commentsArr.push([]);
     allLectures.push(lectureContent);
     console.log(allLectures);
+    res.redirect("/newLectureDisplay");
+});
+
+//displays the newly taken in information
+//prompts user to confirm or cancel their new lecture
+app.get("/newLectureDisplay", function(req, res){
+    var lecture = allLectures[allLectures.length -1];
+    res.render("newLectureDisplay", {lecture: lecture});
+});
+
+//confirmation adds the lecture to their list of lectures
+app.post("/newLectureDisplay/confirm", function(req, res){
     res.redirect("/lectures");
 });
+
+//cancellation removes it and displays the lectures they have
+app.post("/newLectureDisplay/cancel", function(req, res){
+    commentsArr.pop();
+    allLectures.pop();
+    count--;
+    res.redirect("/lectures");
+});
+
 
 app.get("/lectures", function(req,res){
     res.render("lectures",{allLectures: allLectures});
