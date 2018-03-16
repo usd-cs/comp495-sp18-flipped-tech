@@ -7,6 +7,8 @@ the lecture to their class
 <h3>Here is the info for the lecture you have submitted</h3>
 
 <div><strong>Course: </strong><%=lecture.course%></div>
+<div><strong>Date: </strong><%=lecture.lectureDate%></div>
+<div><strong>Time: </strong><%=lecture.lectureTime%> <%=lecture.amPM%></div>
 <div><strong>Lecture Title: </strong><%=lecture.lecture%></div>
 <iframe width="560" height="315" src="<%=lecture.videoURL%>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 <div><strong>Video Description: </strong><%=lecture.videoDesc%></div>
@@ -18,4 +20,5 @@ the lecture to their class
 <form action = "/newLectureDisplay/cancel" method = "POST">
 	<button>Cancel</button>
 </form>
+
 

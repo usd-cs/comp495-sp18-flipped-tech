@@ -38,9 +38,9 @@ var commentsArr = [
 //count is just temporary to keep track of how many lectures we have. Once DB is setup we will have to refactor
 //all of the code
 var count = 3;
-var allLectures = [{num: 0, lecture: "Python Design Patterns", course: "COMP305", videoURL: "https://www.youtube.com/embed/vNHpsC5ng_E", videoDesc: "This leture describes what design patterns are when discussing python. This includes gang of four and singleton"},
-                   {num: 1, lecture: "Parallel Programming", course: "COMP280", videoURL: "https://www.youtube.com/embed/q7sgzDH1cR8", videoDesc: "What is Parallel Programming. Click to learn more"},
-                   {num: 2, lecture: "Java 101 Basics", course: "COMP150", videoURL: "https://www.youtube.com/embed/2Xa3Y4xz8_s", videoDesc: "Here is a quick rundown of java and what to expect as you continue with the course"}
+var allLectures = [{num: 0, lecture: "Python Design Patterns", course: "COMP305", videoURL: "https://www.youtube.com/embed/vNHpsC5ng_E", videoDesc: "This leture describes what design patterns are when discussing python. This includes gang of four and singleton", lectureTime: "12:00", amPM: "AM", lectureDate: "11/11/1111"},
+                   {num: 1, lecture: "Parallel Programming", course: "COMP280", videoURL: "https://www.youtube.com/embed/q7sgzDH1cR8", videoDesc: "What is Parallel Programming. Click to learn more", lectureTime: "12:00", amPM: "AM", lectureDate: "11/11/1111"},
+                   {num: 2, lecture: "Java 101 Basics", course: "COMP150", videoURL: "https://www.youtube.com/embed/2Xa3Y4xz8_s", videoDesc: "Here is a quick rundown of java and what to expect as you continue with the course", lectureTime: "12:00", amPM: "AM", lectureDate: "11/11/1111"}
 ];
 
 //allows for code minimization
@@ -62,12 +62,12 @@ app.get("/lecturePage", function(req, res){
 });
 
 app.post("/newComment", function(req, res){
-	//data taken from pages must be parsed into an object
-	//before being used in regular js
-	var newComment = req.body.comment;
+    //data taken from pages must be parsed into an object
+    //before being used in regular js
+    var newComment = req.body.comment;
     var time = new Date();
     var numLecture = req.body.num;
-	comments = newComment;
+    comments = newComment;
     //automatically use username "erickjperez" until real users are added
     var commentEntry = {username: "erickjperez", time:getTime(time), date:getDate(time), commentData:newComment};
     console.log(commentEntry);
@@ -87,7 +87,13 @@ app.post("/newLecture", function(req, res){
     var course = req.body.course;
     var videoURL = req.body.videolink;
     var videoDesc = req.body.describtion;
-    var lectureContent = {num: count++, lecture: lecture, course: course, videoURL: videoURL, videoDesc: videoDesc};
+    var date = req.body.date;
+    var amPM = req.body.AMorPM;
+    var lectureTime = req.body.time;
+    console.log(date);
+    console.log(amPM);
+    console.log(lectureTime);
+    var lectureContent = {num: count++, lecture: lecture, course: course, videoURL: videoURL, videoDesc: videoDesc, lectureTime: lectureTime, amPM: amPM, lectureDate: date};
     var time = new Date();
     commentsArr.push([]);
     allLectures.push(lectureContent);
