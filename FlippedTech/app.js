@@ -19,10 +19,28 @@ app.use(bodyParser.urlencoded({extended: true}));
 dummy data for now until we can hook it up to a DB
 */
 var commentsArr = [
-    {username:"eromney", time:"3:34", date:"3-12-2018", commentData:"Fast forward to 3:04. It's my favorite part"},
-    {username:"mroth", time:"3:35", date:"3-12-2019", commentData:"^^What he said"},
-    {username:"jwahl", time:"1:10", date:"3-13-2019", commentData:"So why don't you just cast it?"},
-    {username:"nicholaswahl", time:"1:35", date:"3-13-2019", commentData:"Idk"}
+    [
+        {username:"alexanderalvarez", time:"3:34", date:"3-12-2018", commentData:"What advantage does this have over java?"},
+        {username:"mroth", time:"3:35", date:"3-12-2019", commentData:"I'm still unsure about Gang of Four"}
+    ],
+    [
+        {username:"eromney", time:"3:34", date:"3-12-2018", commentData:"Do we need to wait for all threads to finish working?"},
+        {username:"mroth", time:"3:35", date:"3-12-2019", commentData:"Yes, Ethan"},
+        {username:"nicholaswahl", time:"1:10", date:"3-13-2019", commentData:"Don't forget that you must create threads at the beginning"},
+        {username:"mayamccaulife", time:"1:35", date:"3-13-2019", commentData:"What a great lecture. Thanks"}
+    ],
+    [
+        {username:"sgarza", time:"3:34", date:"3-12-2018", commentData:"The lecture really begins at the 1:30 mark"}
+    ]
+
+];
+
+//count is just temporary to keep track of how many lectures we have. Once DB is setup we will have to refactor
+//all of the code
+var count = 3;
+var allLectures = [{num: 0, lecture: "Python Design Patterns", course: "COMP305", videoURL: "https://www.youtube.com/embed/vNHpsC5ng_E", videoDesc: "This leture describes what design patterns are when discussing python. This includes gang of four and singleton"},
+                   {num: 1, lecture: "Parallel Programming", course: "COMP280", videoURL: "https://www.youtube.com/embed/q7sgzDH1cR8", videoDesc: "What is Parallel Programming. Click to learn more"},
+                   {num: 2, lecture: "Java 101 Basics", course: "COMP150", videoURL: "https://www.youtube.com/embed/2Xa3Y4xz8_s", videoDesc: "Here is a quick rundown of java and what to expect as you continue with the course"}
 ];
 
 //allows for code minimization
@@ -48,12 +66,16 @@ app.post("/newComment", function(req, res){
 	//before being used in regular js
 	var newComment = req.body.comment;
     var time = new Date();
+    var numLecture = req.body.num;
 	comments = newComment;
     //automatically use username "erickjperez" until real users are added
     var commentEntry = {username: "erickjperez", time:getTime(time), date:getDate(time), commentData:newComment};
     console.log(commentEntry);
-    commentsArr.push(commentEntry);
-    res.redirect("/lecturePage");
+    commentsArr[numLecture].push(commentEntry);
+    
+    console.log(numLecture);
+    //new comment will then add comment to array and reroute to same lecture page
+    res.render("lecturePage", {lecture: allLectures[numLecture], commentsArr: commentsArr[numLecture]});
 });
 
 app.get("/lectureUpload", function(req, res){
@@ -61,8 +83,26 @@ app.get("/lectureUpload", function(req, res){
 });
 
 app.post("/newLecture", function(req, res){
-    res.redirect("/lectureUpload");
+    var lecture = req.body.lecture;
+    var course = req.body.course;
+    var videoURL = req.body.videolink;
+    var videoDesc = req.body.describtion;
+    var lectureContent = {num: count++, lecture: lecture, course: course, videoURL: videoURL, videoDesc: videoDesc};
+    var time = new Date();
+    commentsArr.push([]);
+    allLectures.push(lectureContent);
+    console.log(allLectures);
+    res.redirect("/lectures");
 });
+
+app.get("/lectures", function(req,res){
+    res.render("lectures",{allLectures: allLectures});
+});
+
+app.get("/lectures/:num", function(req,res){
+    var numLecture = req.params.num;
+    res.render("lecturePage", {lecture: allLectures[numLecture], commentsArr: commentsArr[numLecture]});
+})
 
 //for get requests for any not defined
 //order matters. Must be after the other routes

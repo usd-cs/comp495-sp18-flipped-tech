@@ -4,18 +4,21 @@
 <%var title = "alkdf"; %>
 
 <h1>LECTURE PAGE</h1>
+<a href = "/lectures" class = "btn btn-primary">Back</a>
 
-<%var title = "Lecture 1"; %>
-<%var description = "description"; %>
-<%var address = "https://www.youtube.com/embed/BCIxikOq73Q"; %>
+<h2><%=lecture.course%></h3>
+<h3><%=lecture.lecture%></h3>
+<h5><%=lecture.videoDesc%></h5>
 
-<h3><%=title%></h3>
-<h5><%=description%></h5>
 <h3>Video</h3>
 	<div class="leftpane">
+
+	<iframe width="560" height="315" src="<%=lecture.videoURL%>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+	<!--
 		<iframe width="500" height="420"
-			src="<%=address%>">
+			src="https://youtube.com/embed/<%=lecture.videoURL%>?autoplay=1&controls=0&showinfo=0&autohide=1">
 		</iframe>
+		-->
 	</div>
 	
 
@@ -35,6 +38,7 @@
 
 	<!- this form will handle the comments, textbox that will be sent to app.js page to be handled->
 	<form action = "/newComment" method = "POST">
+		<input type = "hidden" name = "num" value = "<%=lecture.num%>">
 		<input type = "text" name = "comment" placeholder = "Enter Comment Here">
 		<button>Submit</button>
 	</form>
