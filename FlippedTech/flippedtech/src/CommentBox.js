@@ -10,16 +10,29 @@ var commentList = [
 ];
 
 class CommentBox extends Component {
-  render() {
-   	return(
-   		<div>
-   			<h1>Comment Box</h1>
-   			<CommentList lists = {commentList}></CommentList>
-   			<h1></h1>
-   			<CommentForm />
-   		</div>
-   	);
-  }
+	constructor(props){
+		super(props)
+		this.state = {
+			commentlist: commentList
+		}
+	}
+
+	handler(commentText) {
+		commentList.push({id: ++commentList.length, author: "Erick Perez", text:commentText})
+		this.setState({
+			commentlist: commentList
+		})
+	}
+  	render() {
+   		return(
+   			<div>
+   				<h1>Comment Box</h1>
+   				<CommentList lists = {commentList}></CommentList>
+   				<h1></h1>
+   				<CommentForm handler = {this.handler} />
+   			</div>
+	   	);
+ 	 }
 }
 
 export default CommentBox;
