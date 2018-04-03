@@ -7,15 +7,16 @@ var commentList = [
   {id: 2, author: "Satt Maiki", text: "Odds you do it"},
   {id: 3, author: "Saul Garza", text: "Where the chickens at"}
 ];
-/*
+
 class CommentList extends Component {
   render(props){
     var commentNodes = this.props.lists.map(function(comment) {
       return (
-        <Comment author={comment.author} key={comment.id}>
+        <Comment author={comment.author} comment={comment.text}>
           {comment.text}
         </Comment>
-      );}
+      );
+    })
     return(
       <div>
         {commentNodes}
@@ -23,8 +24,8 @@ class CommentList extends Component {
     );
   }
 }
-*/
 
+/*
 var CommentList = React.createClass({
   render: function(props) {
     var commentNodes = this.props.lists.map(function(comment) {
@@ -41,7 +42,7 @@ var CommentList = React.createClass({
     );
   }
 });
-
+*/
 
 /*
 const CommentList = () => {
