@@ -7,7 +7,6 @@ var commentList = [
 ];
 
 
-
 //NEED TO FIGURE OUT HOW TO EXPORT MULTIPLE MODULES
 
 const CommentBox = () => {
@@ -21,19 +20,16 @@ const CommentBox = () => {
 }
 
 const CommentList = () => {
-  render() {
-    let commentNodes = props.commentList.map(function(comment) {
-      return (
-        <Comment author={comment.author} key={comment.id}>
-          {comment.text}
-        </Comment>
-      );
-    });
-  }
   return (
+    <div>
+      <Comment author = "toby">Thats cool</Comment>
+      <Comment author = "tyler">indeed it is</Comment>
+    </div>
+    /*
     <div>
       {commentNodes}
     </div>
+    */
   );
 }
 
