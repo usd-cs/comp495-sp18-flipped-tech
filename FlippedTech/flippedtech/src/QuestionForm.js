@@ -22,19 +22,19 @@ class QuestionForm extends React.Component {
 			<div>
 				<form onSubmit={this.handleSubmit}>
 					Question:
-						<input type="text" value={/*this.state.question*/} />
+						<input type="text" value={this.state.question} />
 					
 					Choice A:
-						<input type="text" value={/*this.state.choiceA*/} />
+						<input type="text" value={this.state.choiceA} />
 					
 					Choice B:
-						<input type="text" value={/*this.state.choiceB*/} />	
+						<input type="text" value={this.state.choiceB} />	
 				
 					Choice C:
-						<input type="text" value={/*this.state.choiceC*/} />
+						<input type="text" value={this.state.choiceC} />
 					
 					Choice D:
-						<input type="text" value={/*this.state.choiceD*/} />
+						<input type="text" value={this.state.choiceD} />
 					
 					Correct Answer:
 						<input type="radio" value="A" checked/>
