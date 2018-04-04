@@ -6,9 +6,19 @@ class CommentForm extends React.Component {
     super(props);
     this.state = {value: ''};
 
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit() {
+
+  	this.props.handler(this.state.value)
+  	//alert(this.state.value)
+  }
 
   render() {
     return (
