@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 const Lecture = (props) => {
   return (
     <div>
-      <h2>
+      <a href="htttps://www.google.com">
         Lecture #{props.lectureNumber}
-      </h2>
+      </a>
       <h3>
         Title: {props.lectureTitle}
       </h3>
