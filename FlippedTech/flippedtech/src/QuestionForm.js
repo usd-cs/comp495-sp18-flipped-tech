@@ -54,10 +54,12 @@ class QuestionForm extends React.Component {
 				<br/>
 				<label>
 				Correct Answer:
-					A <input type="radio" name="selection" value="A" /> 
-					B <input type="radio" name="selection" value="B" /> 
-					C <input type="radio" name="selection" value="C" /> 
-					D <input type="radio" name="selection" value="D" /> 
+					<select name="correctAnswer" value={this.state.correctAnswer} onChange={this.handleChange} >
+						<option value="A">Choice A</option> 
+						<option value="B">Choice B</option> 
+						<option value="C">Choice C</option> 
+						<option value="D">Choice D</option>
+					</select> 
 				</label><br/>
 				<br/>
 				<input type="submit" value="Submit" />
