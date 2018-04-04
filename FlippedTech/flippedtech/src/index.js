@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Banner from './Banner';
-import HomeContent from './HomeContent';
+import QuestionForm from './QuestionForm';
 import registerServiceWorker from './registerServiceWorker';
 import 'tachyons';
 
 ReactDOM.render(
 	<div>
 		<Banner />
-		<HomeContent />
+		<QuestionForm />
 	</div>
 	, document.getElementById('root'));
 registerServiceWorker();
