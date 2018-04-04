@@ -11,53 +11,57 @@ class QuestionForm extends React.Component {
 			choiceD: '',
 			correctAnswer: ''
 		};
+		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
-
-	handleSubmit() {
+	
+	handleChange(event) {
+		this.setState({ [event.target.name]: event.target.value });
+	}
+	handleSubmit(event) {
 		//store question info 
 	}
 
+
 	render() {
 		return (
-			<div>
-				<form onSubmit={this.handleSubmit}>
-					<br/>
-					<label>
-					Question:
-						<input type="text" value={this.state.question} />
-					</label><br/>
-					<br/>
-					<label>
-					Choice A:
-						<input type="text" value={this.state.choiceA} />
-					</label><br/>
-					<br/>
-					<label>
-					Choice B:
-						<input type="text" value={this.state.choiceB} />	
-					</label><br/>
-					<br/>
-					<label>
-					Choice C:
-						<input type="text" value={this.state.choiceC} />
-					</label><br/>
-					<br/>
-					<label>
-					Choice D:
-						<input type="text" value={this.state.choiceD} />
-					</label><br/>
-					<br/>
-					<label>
-					Correct Answer:
-						A <input type="radio" value="A" /> 
-						B <input type="radio" value="B" /> 
-						C <input type="radio" value="C" /> 
-						D <input type="radio" value="D" /> 
-					</label><br/>
-					<br/>
-					<input type="submit" value="Submit" />
-				</form>
-			</div>
+			<form onSubmit={this.handleSubmit}>
+				<br/>
+				<label>
+				Question:
+					<input type="text" name="question" value={this.state.question} onChange={this.handleChange} />
+				</label><br/>
+				<br/>
+				<label>
+				Choice A:
+					<input type="text" name="choiceA" value={this.state.choiceA} onChange={this.handleChange} />
+				</label><br/>
+				<br/>
+				<label>
+				Choice B:
+					<input type="text" name="choiceB" value={this.state.choiceB} onChange={this.handleChange} />	
+				</label><br/>
+				<br/>
+				<label>
+				Choice C:
+					<input type="text" name="choiceC" value={this.state.choiceC} onChange={this.handleChange} />
+				</label><br/>
+				<br/>
+				<label>
+				Choice D:
+					<input type="text" name="choiceD" value={this.state.choiceD} onChange={this.handleChange} />
+				</label><br/>
+				<br/>
+				<label>
+				Correct Answer:
+					A <input type="radio" name="selection" value="A" /> 
+					B <input type="radio" name="selection" value="B" /> 
+					C <input type="radio" name="selection" value="C" /> 
+					D <input type="radio" name="selection" value="D" /> 
+				</label><br/>
+				<br/>
+				<input type="submit" value="Submit" />
+			</form>
 		);
 	}
 }
