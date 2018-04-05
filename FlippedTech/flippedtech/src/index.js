@@ -17,11 +17,11 @@ var commentData = [
     text:"You hear about Pluto? That's messed up" 
   }
 ];
-
+//<CommentBox data = {commentData}/>
 ReactDOM.render(
 	<div>
 		<Banner />
-		<CommentBox data = {commentData}/>
+		<CommentBox />
 	</div>
 	, document.getElementById('root'));
 registerServiceWorker();

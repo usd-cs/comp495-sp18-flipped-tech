@@ -83,7 +83,7 @@ class Comment extends Component{
 
 
 
-var commentList = [
+var newCommentList = [
   {id: 1, author: "Ethan Romney", text: "This site is cool. I wish I knew about it earlier"},
   {id: 2, author: "Satt Maiki", text: "How do you do problem 1"},
   {id: 3, author: "Saul Garza", text: "@Satt Maiki Go to 1:45. The answer is there"}
@@ -92,36 +92,52 @@ var commentList = [
 class CommentBox extends Component {
 	constructor(props){
 		super(props)
+    alert(newCommentList)
 		//alert("updated")
 		this.state = {
-			commentlist: commentList
+			commentlist: newCommentList
 		}
+    this.handler = this.handler.bind(this);
+    
 	}
 
 	handler(commentText) {
+    alert(commentText)
 
+    var comments = this.state.commentlist
+
+    comments.push({id: ++comments.length, author: "Erick Perez", text:commentText})    
+    
+    newCommentList = comments
+    alert(newCommentList)
+    this.setState((state) => ({commentlist: newCommentList}));
+    /*
 		this.props.commentlist.push(commentText);
-		alert('comments');
 		var comments = this.state.commentlist;
 
 		var newComments = comments.concat([commentText]);
 		this.setState({commentlist:newComments});
 		
-		alert("asdfa")
-		var newCommentList = this.state.commentlist
+		*/
+    /*
+    this works kinda
+		newCommentList = this.state.commentlist
 		
 		
-		newCommentList.push({id: ++commentList.length, author: "Erick Perez", text:commentText})
+		newCommentList.push({id: ++newCommentList.length, author: "Erick Perez", text:commentText})
+*/
 		//this.state.commentlist.push({id: (++this.state.commentlist.length), author: "Erick Perez", text:commentText})
 		//alert(this.state.commentlist.length)
 
 		//this.state.commentlist.concat({id: ++commentList.length, author: "Erick Perez", text:commentText})
 		//alert(commentText)
-		
+		/*
 		this.setState({
-			commentlist: newCommentList
+      commentlist: newCommentList
+			//commentlist: newCommentList
 			//this.state.commentlist.concat([{id: ++commentList.length, author: "Erick Perez", text:commentText}])
 		});
+    */ 
 		//this.state.commentlist.concat([{id: ++commentList.length, author: "Erick Perez", text:commentText}])
 
 
