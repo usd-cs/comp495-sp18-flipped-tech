@@ -21,5 +21,6 @@ class LectureBox extends Component {
 			</div>
 		);
 	}
-export default QuestionBox;
 }
+export default QuestionBox;
+
