@@ -2,11 +2,19 @@ import React, { Component } from 'react';
 import QuestionList from './QuestionList';
 import QuestionForm from './QuestionForm';
 
+var questionList = [
+		{number: 1, question:"what is the meaning of life?", choiceA: "no"
+			choiceB: "yes", choiceC: "maybe", choiceD: "all", correctAnswer: "a"},
+		{number: 2, question:"are you happy?", choiceA: "no"
+			choiceB: "yes", choiceC: "maybe", choiceD: "all", correctAnswer: "b"}
+]
+
 class LectureBox extends Component {
 	constructor(props) {
 		super(props)
-		this.state = { questionList = []}
-	}
+		this.state = {
+			questionlist: questionList
+		}
 
 	handler(question) {
 	{/*set new state when question added*/}
@@ -15,7 +23,7 @@ class LectureBox extends Component {
 		return(
 			<div>
 				<h1>Created Quiz Questions</h1>
-				<QuestionList lists={this.state.questionList}></QuestionList>
+				<QuestionList lists={this.state.questionlist}></QuestionList>
 				<br/>
 				<QuestionForm handler={this.handler}> </QuestionForm>
 			</div>
