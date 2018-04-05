@@ -9,11 +9,11 @@ class CommentForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
+  //any change in text will be outputted
   handleChange(event) {
     this.setState({value: event.target.value});
   }
-
+  //when submit happens, calls handler from comment box to use
   handleSubmit() {
 
   	this.props.handler(this.state.value)
