@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 const Question = (props) => {
 	return (
 		<div>
-			<h3>Question:<br/>
-				{props.question}
+			<h3>Question:{props.questionNumber}<br/>
+				{props.questionText}
 			</h3>
 			<h4>
 				A. {props.answerA}<br/>
