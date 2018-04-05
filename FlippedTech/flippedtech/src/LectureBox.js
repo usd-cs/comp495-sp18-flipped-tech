@@ -13,7 +13,7 @@ class LectureBox extends Component {
   render() {
     return(
       <div>
-        <h1>COMP280 Lectures</h1>
+        <h1>MATH150 Lectures</h1>
         <LectureList lists = {lectureList}></LectureList>
       </div>
     );
