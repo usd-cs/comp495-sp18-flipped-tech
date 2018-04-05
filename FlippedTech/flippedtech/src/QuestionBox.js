@@ -15,6 +15,7 @@ class LectureBox extends Component {
 		this.state = {
 			questionlist: questionList
 		}
+	
 
 	handler(question) {
 	{/*set new state when question added*/}
