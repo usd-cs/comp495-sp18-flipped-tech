@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Banner from './Banner';
-import HomeContent from './HomeContent';
+import Youtube from './Youtube';
 import registerServiceWorker from './registerServiceWorker';
 import 'tachyons';
 
 ReactDOM.render(
 	<div>
 		<Banner />
-		<HomeContent />
+		<Youtube />
 	</div>
 	, document.getElementById('root'));
 registerServiceWorker();
