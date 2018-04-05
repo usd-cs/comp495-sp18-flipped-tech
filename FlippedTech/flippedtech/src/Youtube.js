@@ -31,11 +31,11 @@ class Youtube extends Component{
 			
 			//Just a base video embed in case I cannot figure out API
 			<div>
-			<button onClick={this.clicked}>Get Youtube Videos</button>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/A71aqufiNtQ" frameBorder="0"
+				 allow="autoplay; encrypted-media" allowFullScreen>
+			</iframe>
 				<div>
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/A71aqufiNtQ" frameBorder="0"
-						 allow="autoplay; encrypted-media" allowFullScreen>
-					</iframe>
+					<button onClick={this.clicked}>Generate Json Obj</button>
 				</div>
 			</div>
 		);
