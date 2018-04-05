@@ -3,10 +3,10 @@ import LectureList from './LectureList';
 
 
 lectureList = [
-  {number: "1", title: "how to do this"},
-  {number: "2", title: "computer science"},
-  {number: "3", title: "taylor coury"},
-  {number: "4", title: "computer systems intro"},
+  {number: "1", title: "Limit Defintion of the Derivative"},
+  {number: "2", title: "Derivatives 1.0: The Power Rule"},
+  {number: "3", title: "Derivatives 2.0: The Chain Rule"},
+  {number: "4", title: "Derivative 3.0: Trig, Exponential, and Logs"},
 ]
 
 class LectureBox extends Component {
