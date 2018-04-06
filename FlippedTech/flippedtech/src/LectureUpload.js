@@ -13,7 +13,7 @@ return (
 			<input type="text" name="course"/><br/>
 		Link to Lecture Video(<em>Make sure to use the embedded link</em>):<br/>
 			<input type="text" name="videolink" size="35"/><br/>
-		Describtion of Lecture:<br/>
+		Description of Lecture:<br/>
 			<textarea name="describtion" cols="90" rows="5" required="required"></textarea><br/>
 		Date to Make Available(MM/DD/YYYY):<br/>
 			<input type="text" name="date"/><br/>
