@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom'
 
 const Lecture = (props) => {
   return (
     <div>
-      <a href="htttps://www.google.com">
+      <NavLink to='/testLecture' className=''>
         Lecture #{props.lectureNumber}
-      </a>
+      </NavLink>
       <h3>
         Title: {props.lectureTitle}
       </h3>
