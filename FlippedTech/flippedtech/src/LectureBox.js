@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import LectureList from './LectureList';
 
-
+//dummy data
 var lectureList = [
   {number: "1", title: "Limit Defintion of the Derivative"},
   {number: "2", title: "Derivatives 1.0: The Power Rule"},
@@ -9,6 +9,7 @@ var lectureList = [
   {number: "4", title: "Derivative 3.0: Trig, Exponential, and Logs"},
 ]
 
+//renders list of lectures
 class LectureBox extends Component {
   render() {
     return(
