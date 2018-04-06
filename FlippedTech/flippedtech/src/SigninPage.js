@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Signin from './Signin'
 import Logo from './Logo'
 

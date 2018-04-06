@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
-import { Route, NavLink } from 'react-router-dom'
-import HomePage from './HomePage'
+import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 const Signin = (props) => {
 	return (
@@ -12,12 +11,12 @@ const Signin = (props) => {
 					<fieldset id="sign_up" className="ba b--transparent ph0 mh0">
 						{/*Username Entry*/}
 					  <div className="mt3">
-					    <label className="db fw6 lh-copy f6" for="email-address">Username</label>
+					    <label className="db fw6 lh-copy f6" htmlFor="email-address">Username</label>
 					    <input className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="email" name="email-address"  id="email-address"/>
 					  </div>
 						{/*Password Entry*/}
 					  <div className="mv3">
-					    <label className="db fw6 lh-copy f6" for="password">Password</label>
+					    <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
 					    <input className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="password"  id="password"/>
 					  </div>
 					</fieldset>
