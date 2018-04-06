@@ -11,16 +11,15 @@ const Banner = (props) => {
 				<h1 className='f1 tc w-100'>Flipped Tech</h1>
 			</div>
 
-			<BrowserRouter>
-				<div className='dib w-100 bg-light-blue dib'>
-					<div className='flex flex-wrap'>
-						<NavLink to='/home' className='ph3 link black hover-bg-pink bg-animate'>Home</NavLink>
-						<NavLink to='/lectures' className='ph3 link black hover-bg-pink bg-animate'>Lectures</NavLink>
-						<NavLink to='/bookmarks' className='ph3 link black hover-bg-pink bg-animate'>Bookmarks</NavLink>
-						<NavLink to='/calendar' className='ph3 link black hover-bg-pink bg-animate'>Calendar</NavLink>
-					</div>
+			
+			<div className='dib w-100 bg-light-blue dib'>
+				<div className='flex flex-wrap'>
+					<NavLink to='/home' className='ph3 link black hover-bg-pink bg-animate'>Home</NavLink>
+					<NavLink to='/lectures' className='ph3 link black hover-bg-pink bg-animate'>Lectures</NavLink>
+					<NavLink to='/bookmarks' className='ph3 link black hover-bg-pink bg-animate'>Bookmarks</NavLink>
+					<NavLink to='/calendar' className='ph3 link black hover-bg-pink bg-animate'>Calendar</NavLink>
 				</div>
-			</BrowserRouter>
+			</div>
 		</div>
 	);
 }
