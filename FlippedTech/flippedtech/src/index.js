@@ -7,6 +7,7 @@ import HomeContent from './HomeContent';
 import { BrowserRouter, Route, Switch} from 'react-router-dom'
 import registerServiceWorker from './registerServiceWorker';
 import 'tachyons';
+
 import App from './App';
 
 
@@ -17,5 +18,6 @@ ReactDOM.render(
 			<Route exact path='/home' component={HomePage}/>
 		</Switch>
 	</BrowserRouter>
+
 	, document.getElementById('root'));
 registerServiceWorker();
