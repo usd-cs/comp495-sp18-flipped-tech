@@ -5,9 +5,8 @@ import 'tachyons';
 
 
 var newCommentList = [
-  {id: 1, author: "Ethan Romney", text: "This site is cool. I wish I knew about it earlier"},
-  {id: 2, author: "Satt Maiki", text: "How do you do problem 1"},
-  {id: 3, author: "Saul Garza", text: "@Satt Maiki Go to 1:45. The answer is there"}
+  {id: 1, author: "Ethan Romney", text: "What are the benefits of using React over traditional Web Dev?"},
+  {id: 2, author: "Satt Maiki", text: "Are you able to nest comments within one another?"}
 ];
 
 class CommentBox extends Component {
