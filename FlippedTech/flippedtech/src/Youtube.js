@@ -1,36 +1,48 @@
 import React from 'react';
 import YouTube from 'react-youtube';
 
-class Youtube extends React.Component {
-	render() {
-		const opts = {
-			height: '390',
-			width: '640',
-			playerVars: { // https://developers.google.com/youtube/player_parameters
-			autoplay: 0
-		}
-	};
+const videoIdA = 'A71aqufiNtQ';
 
-	return (
-		<YouTube
-			videoId="A71aqufiNtQ" //Will import this from teacher's form
-			opts={opts}
-			onReady={this._onReady}
-			onPlay={this._onPlay}
-		/>
+class Youtube extends React.Component {
+
+	//Constructor for the youtube video player
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			videoId: videoIdA,
+			player: null,
+			played: false,
+		};
+
+		this.onReady = this.onReady.bind(this);
+		this.onPlayVideo = this.onPlayVideo.bind(this);
+		}
+		//Saves the ready state of the player
+		onReady(event) {
+			console.log(`YouTube Player object for videoId: "${this.state.videoId}" has been saved to state.`); // eslint-disable-line
+			this.setState({
+				player: event.target,
+			});
+		}
+		//Function for playing the video, keeps track of whether a student has watched lecture video or not
+		onPlayVideo() {
+			this.state.player.playVideo();
+			if(this.state.played == false){
+				this.state.played == true;
+			}
+		}
+
+		render() {
+		return (
+			<div>
+				<YouTube videoId={this.state.videoId} onReady={this.onReady} />
+				<button onClick={this.onPlayVideo}>Play</button>
+			</div>
 		);
 	}
-
-	_onReady(event) {
-		// access to player in all event handlers via event.target
-		event.target.pauseVideo();
-	}
-
-	_onPlay(event){
-		//acces to the 
-	
-	}
 }
+
 export default Youtube;
 
 
