@@ -1,7 +1,7 @@
 import React from 'react';
 import YouTube from 'react-youtube';
 
-const videoIdA = 'A71aqufiNtQ';
+const videoId = 'A71aqufiNtQ';//Need to import the id code from the LectureUpload form
 
 class Youtube extends React.Component {
 
@@ -10,7 +10,7 @@ class Youtube extends React.Component {
 		super(props);
 
 		this.state = {
-			videoId: videoIdA,
+			videoId: videoId,
 			player: null,
 			played: false,
 		};
@@ -18,6 +18,7 @@ class Youtube extends React.Component {
 		this.onReady = this.onReady.bind(this);
 		this.onPlayVideo = this.onPlayVideo.bind(this);
 		}
+
 		//Saves the ready state of the player
 		onReady(event) {
 			console.log(`YouTube Player object for videoId: "${this.state.videoId}" has been saved to state.`); // eslint-disable-line
