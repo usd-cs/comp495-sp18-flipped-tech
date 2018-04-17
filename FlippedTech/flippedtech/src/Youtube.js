@@ -38,7 +38,7 @@ class Youtube extends React.Component {
 		return (
 			<div>
 				<YouTube videoId={this.state.videoId} onReady={this.onReady} />
-				<button onClick={this.onPlayVideo}>Play</button>
+			{/*	<button onClick={this.onPlayVideo}>Play</button> */}
 			</div>
 		);
 	}
