@@ -78,8 +78,14 @@ app.get("/testLecture", function(req, res){
     console.log("asdhjkshda");
     db.select().table('commentstest')
     .then(ar => {
-        res.render("testLecture", {commentsArr: ar});
+        if(error) throw error;
+        console.log('sending data')
+        return res.json([
+        {id: 1, author: "Ethan Romney", text: "What are the benefits of using React over traditional Web Dev?"},
+        {id: 2, author: "Satt Maiki", text: "Are you able to nest comments within one another?"}
+        ])
     }); 
+    
 });
 
 app.post("/newComment", function(req, res){

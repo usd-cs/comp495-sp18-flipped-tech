@@ -15,12 +15,25 @@ class CommentBox extends Component {
 		super(props)
     //binds comment list to state and will continually update
 		this.state = {
-			commentlist: newCommentList
+			commentlist: []
 		}
     //bind to handler allows handler to work on comments
     this.handler = this.handler.bind(this);
     
 	}
+
+  componentDidMount = () => {
+    fetch('/testLecture')
+      .then(response => {
+        console.log(response)
+        return response
+      })
+      .then(data => console.log(data))
+      .catch(error => console.log(error))
+
+    //console.log(this.commen
+  }
+
   //handler adds comment to list but because it renders every update, the array fails to update
   //page reupdates so once backend is set up we're set
 	handler(commentText) {
