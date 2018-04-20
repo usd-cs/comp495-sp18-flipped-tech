@@ -25,14 +25,6 @@ const response = {
 		grade: 0
 	}]
 }
-const calculateMean = function(numbers) {
-		var total = 0, 
-			i;
-		for (i = 0; i < numbers.length; i += 1) {
-			total += numbers[i];
-		}
-		return (total / numbers.length) * 100;	
-}
 
 class StudentPerformanceTable extends React.Component {
 
@@ -61,7 +53,8 @@ class StudentPerformanceTable extends React.Component {
 				<ReactTable
 				data={data}
 				columns={columns}
-				noDataText="No Data Available" />
+				noDataText="No Data Available" 
+				defaultPageSize={5} />
 			</div>
 		);
 	}
