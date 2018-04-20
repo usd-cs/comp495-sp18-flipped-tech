@@ -5,6 +5,7 @@ import SigninPage from './SigninPage'
 import HomePage from './HomePage'
 //import HomeContent from './HomeContent';
 import LecturePage from './LecturePage'
+import LectureUpload from './LectureUpload'
 import BookmarksPage from './BookmarksPage'
 import CalendarPage from './CalendarPage'
 import TestLecturePage from './TestLecturePage'
@@ -18,7 +19,7 @@ ReactDOM.render(
 	<BrowserRouter>
 		<Switch>
 			<Route exact path='/' component={SigninPage} />
-			<Route exact path='/home' component={HomePage}/>
+			<Route exact path='/home' component={LectureUpload}/>
 			<Route exact path='/lectures' component={LecturePage}/>
 			<Route exact path='/bookmarks' component={BookmarksPage}/>
 			<Route exact path='/calendar' component={CalendarPage}/>
