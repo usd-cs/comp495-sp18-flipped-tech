@@ -22,6 +22,7 @@ app.use(cors());
 //allows ejs files in views folder to locate css files in public
 app.use(express.static("public"));
 //allows for information sent from pages to be rendered and used
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 //allows for code minimization
@@ -76,7 +77,7 @@ app.get("/testLecture", function(req, res){
     console.log("IN RIGHT METHOD");
     db.select().table('commentstest')
     .then(ar => {
-        console.log(ar[0].username);
+        console.log("table length: " + ar.length);
         res.json(ar);
     }); 
     
@@ -87,21 +88,26 @@ app.get("/testLecture", function(req, res){
 app.post("/newComment", function(req, res){
 	//data taken from pages must be parsed into an object
 	//before being used in regular js
-	const newComment = req.body.comment;
-    console.log('newComment: ' + newComment);
-    if(newComment == undefined)
+    //const body = req.body;
+	const newComment = req.body;//.body.text;
+    console.log('newComment: ' + newComment.text);
+    if(newComment.text == '')
         return;
+    console.log('before dat');
     const date = new Date();
-	db('commentstest').insert({
+	const table = db('commentstest').insert({
         username: "erickjperez", //Change in future sprints to reflect actual user account
         time: getTime(date),
         date: getDate(date),
-        comment: newComment
+        comment: newComment.text
     })
-    .returning('*')
+    //.returning('*')
     .then(ar => {
+        console.log('ar: ' + ar);
         res.redirect("/testLecture");
     })
+
+    console.log('table: ' + table);
 });
 
 app.get("/lectureUpload", function(req, res){

@@ -18,8 +18,7 @@ class CommentBox extends Component {
 			commentlist: []
 		}
     //bind to handler allows handler to work on comments
-    this.handler = this.handler.bind(this);
-    
+    //this.handler = this.handler.bind(this);
 	}
 
   componentDidMount = () => {
@@ -30,15 +29,17 @@ class CommentBox extends Component {
       //.then(text => console.log('text: ' + text))
       .then(data => {
         //console.log("data: " + data);
+        //this.setState({commentlist: []});
         const dataList = JSON.parse(data);
+        console.log('datalist: ' + dataList);
         const userList = dataList.map( (userObj) => {
           const author = userObj.username;
           const text = userObj.comment
-          //console.log('author: ' + author + '  text: ' + text);
+          console.log('author: ' + author + '  text: ' + text);
           return {author: author, text: text}
         });
         //console.log('userList: ' + userList[0].author);
-        //console.log('length: '+ userList.length)
+        console.log('length: '+ userList.length)
         //console.log("comment: " + user.comment);
         //const ar = [{author: user.username, text: user.comment}];
         //ar.push("jadjlksajdlkasjd");
@@ -55,9 +56,20 @@ class CommentBox extends Component {
      
   }
 
-  getComments = () => {
-
+  addComment = (commentText) => {
+    alert(typeof(commentText));
+    fetch('/newComment', {
+      headers: {'Content-Type': 'application/json'},
+      method: 'post',
+      body: JSON.stringify({id: ++this.state.commentlist.length, author: "Erick Perez", text:commentText})
+    })
+    .then(response => {
+      alert(response.text())
+      return response.text()
+    })
+    .then(data => console.log(data))
   }
+
   callAPI = async () => {
     const response = await fetch('/testLecture');
     const body = await response.json();
@@ -66,7 +78,7 @@ class CommentBox extends Component {
       throw Error(body.message);
     return body;
   };
-
+/*
   //handler adds comment to list but because it renders every update, the array fails to update
   //page reupdates so once backend is set up we're set
 	handler(commentText) {
@@ -78,30 +90,6 @@ class CommentBox extends Component {
     .then(response => response.text())
     .then(data => console.log(data))
 
-    fetch("/testLecture")
-      .then(response => {
-        return response.text()
-      })
-      //.then(text => console.log('text: ' + text))
-      .then(data => {
-        //console.log("data: " + data);
-        const dataList = JSON.parse(data);
-        const userList = dataList.map( (userObj) => {
-          const author = userObj.username;
-          const text = userObj.comment
-          //console.log('author: ' + author + '  text: ' + text);
-          return {author: author, text: text}
-        });
-        //console.log('userList: ' + userList[0].author);
-        //console.log('length: '+ userList.length)
-        //console.log("comment: " + user.comment);
-        //const ar = [{author: user.username, text: user.comment}];
-        //ar.push("jadjlksajdlkasjd");
-        //console.log('ar: ' + ar.length);
-        this.setState({commentlist: userList});
-        //console.log("YEAHHH " + this.state.commentlist);
-      })
-      .catch(error => console.log(error))
     /*
     var comments = this.state.commentlist
     comments.push()    
@@ -109,14 +97,15 @@ class CommentBox extends Component {
     //setState will then re render whole page
     this.setState((state) => ({commentlist: newCommentList}));
 */
-	}
+	//}
   	render() {
    		return(
    			<div className='b--solid tc'>
    				<h1>Comment Box</h1>
+          {alert('list: ' + this.state.commentlist)}
    				<CommentList lists = {this.state.commentlist}></CommentList>
    				<h1></h1>
-   				<CommentForm handler = {this.handler} />
+   				<CommentForm handler = {this.addComment} />
    			</div>
 	   	);
  	 }
