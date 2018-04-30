@@ -23,26 +23,92 @@ class CommentBox extends Component {
 	}
 
   componentDidMount = () => {
-    fetch('/testLecture')
+    fetch("/testLecture")
       .then(response => {
-        console.log(response)
-        return response
+        return response.text()
       })
-      .then(data => console.log(data))
+      //.then(text => console.log('text: ' + text))
+      .then(data => {
+        //console.log("data: " + data);
+        const dataList = JSON.parse(data);
+        const userList = dataList.map( (userObj) => {
+          const author = userObj.username;
+          const text = userObj.comment
+          //console.log('author: ' + author + '  text: ' + text);
+          return {author: author, text: text}
+        });
+        //console.log('userList: ' + userList[0].author);
+        //console.log('length: '+ userList.length)
+        //console.log("comment: " + user.comment);
+        //const ar = [{author: user.username, text: user.comment}];
+        //ar.push("jadjlksajdlkasjd");
+        //console.log('ar: ' + ar.length);
+        this.setState({commentlist: userList});
+        //console.log("YEAHHH " + this.state.commentlist);
+      })
       .catch(error => console.log(error))
-
-    //console.log(this.commen
+      /*
+    this.callAPI()
+      .then(res => this.setState({ commentlist: res.express }))
+      .catch(err => console.log(err));
+      */
+     
   }
+
+  getComments = () => {
+
+  }
+  callAPI = async () => {
+    const response = await fetch('/testLecture');
+    const body = await response.json();
+
+    if(response.status !== 200)
+      throw Error(body.message);
+    return body;
+  };
 
   //handler adds comment to list but because it renders every update, the array fails to update
   //page reupdates so once backend is set up we're set
 	handler(commentText) {
+    const text = commentText;
+    fetch('/newComment', {
+      method: 'post',
+      body: JSON.stringify({id: ++this.state.commentlist.length, author: "Erick Perez", text:text})
+    })
+    .then(response => response.text())
+    .then(data => console.log(data))
+
+    fetch("/testLecture")
+      .then(response => {
+        return response.text()
+      })
+      //.then(text => console.log('text: ' + text))
+      .then(data => {
+        //console.log("data: " + data);
+        const dataList = JSON.parse(data);
+        const userList = dataList.map( (userObj) => {
+          const author = userObj.username;
+          const text = userObj.comment
+          //console.log('author: ' + author + '  text: ' + text);
+          return {author: author, text: text}
+        });
+        //console.log('userList: ' + userList[0].author);
+        //console.log('length: '+ userList.length)
+        //console.log("comment: " + user.comment);
+        //const ar = [{author: user.username, text: user.comment}];
+        //ar.push("jadjlksajdlkasjd");
+        //console.log('ar: ' + ar.length);
+        this.setState({commentlist: userList});
+        //console.log("YEAHHH " + this.state.commentlist);
+      })
+      .catch(error => console.log(error))
+    /*
     var comments = this.state.commentlist
-    comments.push({id: ++comments.length, author: "Erick Perez", text:commentText})    
+    comments.push()    
     newCommentList = comments
     //setState will then re render whole page
     this.setState((state) => ({commentlist: newCommentList}));
-
+*/
 	}
   	render() {
    		return(

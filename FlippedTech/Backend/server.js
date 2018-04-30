@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 //allows for code minimization
 //when giving a file, just give name. Does not need .ejs
 app.set("view engine", "ejs");
-
+app.set('port', (process.env.PORT || 3001));
 
 //===============================================================================================
 //Uncomment this chunk of code, if you accidentally deleted the pre-entered entries in the table
@@ -70,28 +70,27 @@ db.insert([
 //req and res found as paramters are typicala names for routes and their actions
 //req is for request and is used when info is being submitted through a page
 //res is a response and is used when responding and routing to a page
-app.get("/", function(req, res){
-    res.render("homePage");
-});
 
+console.log("testting");
 app.get("/testLecture", function(req, res){
-    console.log("asdhjkshda");
+    console.log("IN RIGHT METHOD");
     db.select().table('commentstest')
     .then(ar => {
-        if(error) throw error;
-        console.log('sending data')
-        return res.json([
-        {id: 1, author: "Ethan Romney", text: "What are the benefits of using React over traditional Web Dev?"},
-        {id: 2, author: "Satt Maiki", text: "Are you able to nest comments within one another?"}
-        ])
+        console.log(ar[0].username);
+        res.json(ar);
     }); 
     
+    //const data = [{commentlist : "comment"}];
+    //res.json(data);
 });
 
 app.post("/newComment", function(req, res){
 	//data taken from pages must be parsed into an object
 	//before being used in regular js
 	const newComment = req.body.comment;
+    console.log('newComment: ' + newComment);
+    if(newComment == undefined)
+        return;
     const date = new Date();
 	db('commentstest').insert({
         username: "erickjperez", //Change in future sprints to reflect actual user account
@@ -101,7 +100,7 @@ app.post("/newComment", function(req, res){
     })
     .returning('*')
     .then(ar => {
-        res.redirect("/lecturePage");
+        res.redirect("/testLecture");
     })
 });
 
@@ -115,6 +114,10 @@ app.post("/newLecture", function(req, res){
 });
 */
 
+
+app.get("/", function(req, res){
+    res.render("homePage");
+});
 //for get requests for any not defined
 //order matters. Must be after the other routes
 app.get("*", function(req, res){
@@ -123,8 +126,8 @@ app.get("*", function(req, res){
 
 //tell express to listen for requests(start server)
 //this sets up the server on localhost 3001
-app.listen(3001, function(){
-    console.log("server has started");
+app.listen(app.get('port'), function(){
+    console.log("server has started on port " + app.get('port'));
 });
 
 //Takes in Date Object and and returns formatted time as hh:mm

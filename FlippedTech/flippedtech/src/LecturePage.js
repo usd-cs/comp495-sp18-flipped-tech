@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import LectureBox from './LectureBox';
 import Banner from './Banner'
 
