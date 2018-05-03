@@ -15,8 +15,8 @@ const AdminBanner = (props) => {
 			<div className='dib w-100 bg-light-blue dib'>
 				<div className='flex flex-wrap'>
 					<NavLink to='/adminHome' className='ph3 link black hover-bg-pink bg-animate'>Home</NavLink>
-					<NavLink to='/lectures' className='ph3 link black hover-bg-pink bg-animate'>Lectures</NavLink>
-					<NavLink to='/assignments' className='ph3 link black hover-bg-pink bg-animate'>Assignments</NavLink>
+					<NavLink to='/adminLectures' className='ph3 link black hover-bg-pink bg-animate'>Lectures</NavLink>
+					<NavLink to='/adminAssignments' className='ph3 link black hover-bg-pink bg-animate'>Assignments</NavLink>
 				</div>
 			</div>
 		</div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom'
-import adminHomePage from './Admin Components/adminHomePage'
+import AdminHomePage from './AdminComponents/AdminHomePage'
 import Signin from './Signin'
 import Logo from './Logo'
 

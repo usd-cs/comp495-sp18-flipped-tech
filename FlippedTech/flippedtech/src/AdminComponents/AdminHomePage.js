@@ -6,7 +6,6 @@ const AdminHomePage = (props) => {
 	return (
 		<div>
 			<AdminBanner/>
-			<h2>ahhh</h2>
 			<AdminHomeContent/>	
 		</div>
 	);
