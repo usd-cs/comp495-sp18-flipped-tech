@@ -14,14 +14,7 @@ class CommentForm extends React.Component {
   handleChange = (event) => {
     this.setState({value: event.target.value});
   };
-  /*
-  //when submit happens, calls handler from comment box to use
-  handleSubmit() {
 
-  	this.props.handler(this.state.value)
-  	//alert(this.state.value)
-  }
-  */
   submitHandler = () => {
     const commentText = this.state.value;
     this.props.handler(commentText);

@@ -33,7 +33,7 @@ app.set('port', (process.env.PORT || 3001));
 //===============================================================================================
 //Uncomment this chunk of code, if you accidentally deleted the pre-entered entries in the table
 //Run the code once, then comment it again to avoid duplicate entries
-/*
+
 db.insert([
     {
         username:"eromney", 
@@ -62,9 +62,9 @@ db.insert([
     }]
 ).into('commentstest')
     .then( () => console.log('entered'));
-*/
-//===============================================================================================
 
+//===============================================================================================
+//db.schema.dropTableIfExists('commentstest');
 
 //the following .get and .post functions create the routes to different
 //pages and we can then pass data in and out of the ejs files
