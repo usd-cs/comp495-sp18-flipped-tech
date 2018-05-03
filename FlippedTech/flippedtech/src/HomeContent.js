@@ -2,8 +2,8 @@ import React from 'react';
 
 const HomeContent = (props) => {
 	return (
-		<div class="mw9 center">	  
-		    <div class="fl w-100 w-third-ns pa1 pv4">
+		<div className="mw9 center">	  
+		    <div className="fl w-100 w-third-ns pa1 pv4">
 		      	<b>Notifications:</b>
 		      	<ul>
 		      		<li>COMP 495
@@ -19,14 +19,14 @@ const HomeContent = (props) => {
 		      		</li>
 		      	</ul>
 		    </div>
-		    <div class="fl w-100 w-third-ns pa1 pv4">
+		    <div className="fl w-100 w-third-ns pa1 pv4">
 		      <b>Courses:</b>
 		      	<ul>
 		      		<li>COMP 495: 495 Senior Project</li>
 		      		<li>COMP 310: Operating Systems</li>
 		      	</ul>
 		    </div>
-		    <div class="fl w-100 w-third-ns pa1 pv4">
+		    <div className="fl w-100 w-third-ns pa1 pv4">
 		      <b>Upcoming Assignments:</b>
 		      	<ul>
 		      		<li>COMP 495

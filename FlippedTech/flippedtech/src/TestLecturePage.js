@@ -1,7 +1,7 @@
 import React from 'react';
 import Banner from './Banner'
 import Youtube from './Youtube'
-import CommentBox from './CommentBox'
+import CommentBox from './components/Comments/CommentBox'
 
 const TestLecturePage = (props) => {
 	return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Banner from './Banner';
+//import Banner from './Banner';
 import SigninPage from './SigninPage'
 import HomePage from './HomePage'
 //import HomeContent from './HomeContent';
