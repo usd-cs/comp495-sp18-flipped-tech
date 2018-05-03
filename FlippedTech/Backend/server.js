@@ -33,7 +33,7 @@ app.set('port', (process.env.PORT || 3001));
 //===============================================================================================
 //Uncomment this chunk of code, if you accidentally deleted the pre-entered entries in the table
 //Run the code once, then comment it again to avoid duplicate entries
-
+/*
 db.insert([
     {
         username:"eromney", 
@@ -62,7 +62,7 @@ db.insert([
     }]
 ).into('commentstest')
     .then( () => console.log('entered'));
-
+*/
 //===============================================================================================
 //db.schema.dropTableIfExists('commentstest');
 
@@ -93,7 +93,7 @@ app.post("/newComment", function(req, res){
     console.log('newComment: ' + newComment.text);
     if(newComment.text == '')
         return;
-    console.log('before dat');
+    console.log('before date');
     const date = new Date();
 	const table = db('commentstest').insert({
         username: "erickjperez", //Change in future sprints to reflect actual user account

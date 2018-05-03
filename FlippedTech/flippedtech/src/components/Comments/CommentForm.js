@@ -15,9 +15,13 @@ class CommentForm extends React.Component {
     this.setState({value: event.target.value});
   };
 
-  submitHandler = () => {
+  submitHandler = (e) => {
+    e.preventDefault();
     const commentText = this.state.value;
-    this.props.handler(commentText);
+    if(this.state.value !== '')
+      this.props.handler(commentText);
+    else
+      alert('Blank Comments not allowed');
   };
 
   render() {

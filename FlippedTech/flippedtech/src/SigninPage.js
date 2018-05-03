@@ -1,15 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Route, Redirect } from 'react-router-dom'
+import adminHomePage from './Admin Components/adminHomePage'
 import Signin from './Signin'
 import Logo from './Logo'
 
 //SigninPage element that will display all the components of a signin page
-const SigninPage = (props) => {
-	return (
-		<div>
-			<Logo />
-			<Signin/>
-		</div>
-	);
+class SigninPage extends Component{
+	/*
+	onSubmit = (name) => {
+		<Route exact path='/' render={() => (
+			name === 'admin' ? <Redirect to='/adminHomePage' /> : <Redirect to='/' />
+		)}
+		/>
+	}
+*/
+	render(){
+		return(
+			<div>
+				<Logo />
+				<Signin/>
+			</div>
+		)
+	};
 }
 
 export default SigninPage;
