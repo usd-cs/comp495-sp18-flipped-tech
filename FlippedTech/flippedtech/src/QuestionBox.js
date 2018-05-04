@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import QuestionList from './QuestionList';
 import QuestionForm from './QuestionForm';
+import 'tachyons';
 
+//dummy data
 var questionList = [
 		{number: 1, question:"what is the meaning of life?", choiceA: "no",
 			choiceB: "yes", choiceC: "maybe", choiceD: "all", correctAnswer: "a"},
@@ -16,12 +18,15 @@ class QuestionBox extends Component {
 			questionlist: questionList
 		}
 	}
-	
-
-	handler(question) {
-	/*set new state when question added*/
-		alert("got it")
+	//Set up for backend
+	componentDidMount = () => {
+		
 	}
+
+	addQuestion = (questionText, A, B, C, D, rightAnswer) => {
+
+	}
+
 	render() {
 		alert(questionList)
 		return(
@@ -29,7 +34,7 @@ class QuestionBox extends Component {
 				<h1>Created Quiz Questions</h1>
 				<QuestionList lists={this.state.questionlist}></QuestionList>
 				<br/>
-				<QuestionForm handler={this.handler}> </QuestionForm>
+				<QuestionForm handler={this.addQuestion}> </QuestionForm>
 			</div>
 		);
 	}
