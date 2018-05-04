@@ -69,7 +69,7 @@ class QuestionForm extends React.Component {
 					</select> 
 				</label><br/>
 				<br/>
-				<input type="submit" value="Submit" />
+				<input type="submit" value="Add Question" />
 			</form>
 		);
 	}
