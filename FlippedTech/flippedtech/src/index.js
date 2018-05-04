@@ -10,7 +10,7 @@ import CalendarPage from './CalendarPage'
 import TestLecturePage from './TestLecturePage'
 //Admin components
 import AdminHomePage from './AdminComponents/AdminHomePage';
-import AdminLecturePage from './AdminComponents/AdminLecturePage';
+import AdminLectureListPage from './AdminComponents/AdminLectureListPage';
 
 import { BrowserRouter, Route, Switch} from 'react-router-dom'
 import registerServiceWorker from './registerServiceWorker';
@@ -27,7 +27,7 @@ ReactDOM.render(
 			<Route exact path='/testLecture' component={TestLecturePage}/>
 
 			<Route exact path='/adminHome' component={AdminHomePage}/>
-			<Route exact path='/adminLectures' component={AdminLecturePage}/>
+			<Route exact path='/adminLectures' component={AdminLectureListPage}/>
 		</Switch>
 	</BrowserRouter>
 	, document.getElementById('root'));

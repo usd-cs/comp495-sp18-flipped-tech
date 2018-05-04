@@ -71,8 +71,19 @@ db.insert([
 //req and res found as paramters are typicala names for routes and their actions
 //req is for request and is used when info is being submitted through a page
 //res is a response and is used when responding and routing to a page
+app.get('/adminLectureList', function(req,res) {
+    console.log("retrrieving admin lectures");
+    db.select().table('adminlectures')
+    .then(ar => {
+        console.log('admin lectures table: ' + ar);
+        res.json(ar);
+    });
+});
 
-console.log("testting");
+app.get('/adminLectureList/:lectureId', function(req, res) {
+    
+});
+
 app.get("/testLecture", function(req, res){
     console.log("IN RIGHT METHOD");
     db.select().table('commentstest')
