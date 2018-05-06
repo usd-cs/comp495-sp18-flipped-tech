@@ -75,7 +75,7 @@ app.get('/adminLectureList', function(req,res) {
     console.log("retrrieving admin lectures");
     db.select().table('adminlectures')
     .then(ar => {
-        console.log('admin lectures table: ' + ar);
+        console.log('admin lectures table adding: ' + ar);
         res.json(ar);
     });
 });

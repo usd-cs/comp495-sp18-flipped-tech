@@ -51,10 +51,20 @@ class CommentBox extends Component {
       body: JSON.stringify({id: ++this.state.commentlist.length, author: "Erick Perez", text:commentText})
     })
     .then(response => {
-      alert(response.text())
       return response.text()
     })
-    .then(data => console.log(data))
+    .then(data => {
+      const dataList = JSON.parse(data);
+      console.log('datalist: ' + dataList);
+      const userList = dataList.map( (userObj) => {
+        const author = userObj.username;
+        const text = userObj.comment
+        console.log('author: ' + author + '  text: ' + text);
+        return {author: author, text: text}
+      });
+      console.log('length: '+ userList.length)
+      this.setState({commentlist: userList});
+    })
   }
 
 	render() {

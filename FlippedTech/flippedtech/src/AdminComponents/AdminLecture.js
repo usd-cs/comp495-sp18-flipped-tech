@@ -1,13 +1,16 @@
 import React from 'react';
+import { NavLink} from 'react-router-dom'
 
 const AdminLecture = (props) => {
   return (
     <div>
     	<span>
-    		{props.id}
-        	<h2>
-          	{props.title}
-        	</h2>
+    		<h1 className='dib ma3'>{props.id}.</h1>
+        	<NavLink to={'/adminLectureList/' + props.id}
+                className='no-underline f3 lh-copy'
+            >
+          	     {props.title}
+        	</NavLink>
         </span>
     </div>
     );

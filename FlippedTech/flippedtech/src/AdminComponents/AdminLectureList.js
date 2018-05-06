@@ -4,17 +4,20 @@ import Lecture from './AdminLecture';
 
 class AdminLectureList extends Component {
   render(props){
-    console.log(this.props.lists)
+    //console.log('IN LIST Component');
+    //console.log(this.props.lists);
+    {/*}
     var lectureNodes = this.props.lists.map(function(lecture) {
       return (
         <Lecture id={lecture.id} title={lecture.title}>
         </Lecture>
       );
     })
+  */}
     return(
       //outputs the parsed data
       <div className='b--solid tc'>
-        {lectureNodes}
+        <h2>LectureList</h2>
       </div>
     );
   }
