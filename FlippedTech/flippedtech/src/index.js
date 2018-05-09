@@ -9,11 +9,13 @@ import LectureUpload from './LectureUpload'
 import BookmarksPage from './BookmarksPage'
 import CalendarPage from './CalendarPage'
 import TestLecturePage from './TestLecturePage'
+//Admin components
+import AdminHomePage from './AdminComponents/AdminHomePage';
+import AdminLectureListPage from './AdminComponents/AdminLectureListPage';
+
 import { BrowserRouter, Route, Switch} from 'react-router-dom'
 import registerServiceWorker from './registerServiceWorker';
 import 'tachyons';
-//import App from './App';
-
 
 ReactDOM.render(
 	<BrowserRouter>
@@ -24,6 +26,9 @@ ReactDOM.render(
 			<Route exact path='/bookmarks' component={BookmarksPage}/>
 			<Route exact path='/calendar' component={CalendarPage}/>
 			<Route exact path='/testLecture' component={TestLecturePage}/>
+
+			<Route exact path='/adminHome' component={AdminHomePage}/>
+			<Route exact path='/adminLectures' component={AdminLectureListPage}/>
 		</Switch>
 	</BrowserRouter>
 	, document.getElementById('root'));

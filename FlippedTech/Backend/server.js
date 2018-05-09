@@ -33,7 +33,7 @@ app.set('port', (process.env.PORT || 3001));
 //===============================================================================================
 //Uncomment this chunk of code, if you accidentally deleted the pre-entered entries in the table
 //Run the code once, then comment it again to avoid duplicate entries
-
+/*
 db.insert([
     {
         username:"eromney", 
@@ -62,7 +62,7 @@ db.insert([
     }]
 ).into('commentstest')
     .then( () => console.log('entered'));
-
+*/
 //===============================================================================================
 //db.schema.dropTableIfExists('commentstest');
 
@@ -71,8 +71,19 @@ db.insert([
 //req and res found as paramters are typicala names for routes and their actions
 //req is for request and is used when info is being submitted through a page
 //res is a response and is used when responding and routing to a page
+app.get('/adminLectureList', function(req,res) {
+    console.log("retrrieving admin lectures");
+    db.select().table('adminlectures')
+    .then(ar => {
+        console.log('admin lectures table adding: ' + ar);
+        res.json(ar);
+    });
+});
 
-console.log("testting");
+app.get('/adminLectureList/:lectureId', function(req, res) {
+    
+});
+
 app.get("/testLecture", function(req, res){
     console.log("IN RIGHT METHOD");
     db.select().table('commentstest')
@@ -93,7 +104,7 @@ app.post("/newComment", function(req, res){
     console.log('newComment: ' + newComment.text);
     if(newComment.text == '')
         return;
-    console.log('before dat');
+    console.log('before date');
     const date = new Date();
 	const table = db('commentstest').insert({
         username: "erickjperez", //Change in future sprints to reflect actual user account
