@@ -12,7 +12,7 @@ class AdminLectureBox extends Component {
 
   componentDidMount = () => {
     console.log('did mounting');
-    fetch("/adminLectureList")
+    fetch("/lectureList")
       .then(response => {
         return response.text();
       })

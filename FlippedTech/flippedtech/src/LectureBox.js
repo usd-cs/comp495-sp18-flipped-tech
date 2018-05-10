@@ -1,21 +1,58 @@
 import React, { Component } from 'react';
 import LectureList from './LectureList';
-
-//dummy data
-var lectureList = [
-  {number: "1", title: "Limit Defintion of the Derivative"},
-  {number: "2", title: "Derivatives 1.0: The Power Rule"},
-  {number: "3", title: "Derivatives 2.0: The Chain Rule"},
-  {number: "4", title: "Derivative 3.0: Trig, Exponential, and Logs"},
-]
+import Lecture from './Lecture';
 
 //renders list of lectures
 class LectureBox extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      lecturelist: []
+    }
+  }
+
+  componentDidMount = () => {
+    console.log('did mounting');
+    fetch("/lectureList")
+      .then(response => {
+        return response.text();
+      })
+      .then(data => {
+        console.log('data: ' + data);
+        const dataList = JSON.parse(data);
+        console.log('datalist: ' + dataList);
+        const userList = dataList.map( (userObj) => {
+          console.log('id: ' + userObj.id);
+          console.log("title: " + userObj.title);
+          return {id: userObj.id, title: userObj.title}
+        });
+        console.log('userList: ' + userList);
+        this.setState({lecturelist: userList});
+      })
+      .catch(error => console.log(error))
+  }
+
+  componentWillMount = () => {
+    console.log('will mount');
+  }
+
+  componentDidUpdate = () => {
+    console.log('updated');
+  }
+
   render() {
     return(
       <div>
-        <h1>MATH150 Lectures</h1>
-        <LectureList lists = {lectureList}></LectureList>
+        <h1 className='ma3 underline'>Lectures</h1>
+        <div>
+          {this.state.lecturelist.map(function(lecture) {
+            return (
+              <Lecture id={lecture.id} title={lecture.title}>
+              </Lecture>
+            );
+            })
+          } 
+        </div>  
       </div>
     );
   }

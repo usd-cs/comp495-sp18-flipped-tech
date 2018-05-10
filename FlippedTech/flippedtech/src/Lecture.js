@@ -4,14 +4,16 @@ import { NavLink } from 'react-router-dom'
 const Lecture = (props) => {
   return (
     <div>
-      <NavLink to='/testLecture' className=''>
-        Lecture #{props.lectureNumber}
-      </NavLink>
-      <h3>
-        Title: {props.lectureTitle}
-      </h3>
+      <span>
+        <h1 className='dib ma3'>{props.id}.</h1>
+          <NavLink to={'/lectureList/' + props.id}
+                className='no-underline f3 lh-copy'
+            >
+                 {props.title}
+          </NavLink>
+        </span>
     </div>
-  );
+    );
 }
 
 export default Lecture;
