@@ -32,6 +32,7 @@ ReactDOM.render(
 			<Route exact path='/lectureUploadPage' component={AdminLectureUploadPage}/>
 
 			<Route path='/lectureList/' component={TestLecturePage}/>
+			<Route path='/adminlectureList/' component={TestLecturePage}/>
 		</Switch>
 	</BrowserRouter>
 	, document.getElementById('root'));
