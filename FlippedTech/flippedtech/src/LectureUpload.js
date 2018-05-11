@@ -39,7 +39,7 @@ class LectureUpload extends React.Component {
 	}
 
 	handleSubmit = (event) => {
-		alert('in handle submit');
+		alert('in handle submit');  
 		event.preventDefault();
 	    if(!this.empty()){
 	      this.submitLecture();
