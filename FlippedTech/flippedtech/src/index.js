@@ -12,7 +12,6 @@ import TestLecturePage from './TestLecturePage'
 import AdminHomePage from './AdminComponents/AdminHomePage';
 import AdminLectureListPage from './AdminComponents/AdminLectureListPage';
 import AdminLectureUploadPage from './AdminComponents/AdminLectureUploadPage'
-import LectureUpload from './LectureUpload'
 
 import { BrowserRouter, Route, Switch} from 'react-router-dom'
 import registerServiceWorker from './registerServiceWorker';

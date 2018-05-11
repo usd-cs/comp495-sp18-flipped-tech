@@ -8,6 +8,7 @@ const AdminLectureListPage = () => {
 	return (
 		<div>
 			<AdminBanner />
+			<h1>Video Lecture Upload</h1>
 			<LectureUpload />
 		</div>
 	);

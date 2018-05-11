@@ -75,7 +75,7 @@ app.get('/lectureList', function(req,res) {
     console.log("retrrieving lectures");
     db.select().table('adminlectures')
     .then(ar => {
-        console.log('admin lectures table adding: ' + ar);
+        console.log('admin lectures table: ' + ar);
         res.json(ar);
     });
 });
@@ -94,6 +94,7 @@ app.post('/newLecture', function(req, res) {
     const title = req.body.title;
     console.log('title: ' + title);
     db('adminlectures').insert({
+        id: 6,
         title: title
     })
     .then(ar => {
