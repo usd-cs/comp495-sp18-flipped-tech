@@ -7,9 +7,12 @@ class LectureBox extends Component {
   constructor(props){
     super(props)
     this.state = {
+      id: 0,
+      title: '',
+      link: '',
       lecturelist: []
     }
-  }
+  };
 
   componentDidMount = () => {
     console.log('did mounting');
@@ -30,29 +33,48 @@ class LectureBox extends Component {
         this.setState({lecturelist: userList});
       })
       .catch(error => console.log(error))
-  }
+  };
 
-  componentWillMount = () => {
-    console.log('will mount');
-  }
-
-  componentDidUpdate = () => {
-    console.log('updated');
-  }
+  lectureClicked = (id) => {
+    console.log('clicked')
+    fetch('/lecturelist/'+id) 
+      .then(response => response.text())
+      .then(data => {
+        console.log('data: ' + data);
+        const dataList = JSON.parse(data)
+        console.log('dataList: ' + dataList);
+        const title = dataList.title;
+        const link = dataList.youtubelink
+        this.setState({title: title, link: link});
+        console.log(this.state.title + ' ' + this.state.link);
+    })
+    .catch(error => console.log(error))
+  };
 
   render() {
+    const id = this.state.id;
+
+    const element = (id === 0 ?
+          <div>
+            
+          </div> 
+            :
+          <div>
+            <h1>made it</h1>
+          </div>)
+
     return(
       <div>
         <h1 className='ma3 underline'>Lectures</h1>
-        <div>
-          {this.state.lecturelist.map(function(lecture) {
-            return (
-              <Lecture id={lecture.id} title={lecture.title}>
-              </Lecture>
-            );
-            })
-          } 
-        </div>  
+            <div>
+              {this.state.lecturelist.map((lecture) => {
+                return (
+                  <Lecture id={lecture.id} title={lecture.title}>
+                  </Lecture>
+                );
+                })
+              } 
+            </div>
       </div>
     );
   }

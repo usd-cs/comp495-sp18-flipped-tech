@@ -4,10 +4,12 @@ import ReactDOM from 'react-dom';
 import SigninPage from './SigninPage'
 import HomePage from './HomePage'
 //import HomeContent from './HomeContent';
-import LecturePage from './LecturePage'
+import LectureListPage from './LectureListPage'
 import BookmarksPage from './BookmarksPage'
 import CalendarPage from './CalendarPage'
 import TestLecturePage from './TestLecturePage'
+import LecturePage from './LecturePage'
+
 //Admin components
 import AdminHomePage from './AdminComponents/AdminHomePage';
 import AdminLectureListPage from './AdminComponents/AdminLectureListPage';
@@ -22,7 +24,7 @@ ReactDOM.render(
 		<Switch>
 			<Route exact path='/' component={SigninPage} />
 			<Route exact path='/home' component={HomePage}/>
-			<Route exact path='/lectures' component={LecturePage}/>
+			<Route exact path='/lectures' component={LectureListPage}/>
 			<Route exact path='/bookmarks' component={BookmarksPage}/>
 			<Route exact path='/calendar' component={CalendarPage}/>
 			<Route exact path='/testLecture' component={TestLecturePage}/>
@@ -31,7 +33,7 @@ ReactDOM.render(
 			<Route exact path='/adminLectures' component={AdminLectureListPage}/>
 			<Route exact path='/lectureUploadPage' component={AdminLectureUploadPage}/>
 
-			<Route path='/lectureList/' component={TestLecturePage}/>
+			<Route exact path='/lectureList/:id' component={LecturePage}/>
 			<Route path='/adminlectureList/' component={TestLecturePage}/>
 		</Switch>
 	</BrowserRouter>

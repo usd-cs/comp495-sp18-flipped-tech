@@ -73,20 +73,45 @@ db.insert([
 //res is a response and is used when responding and routing to a page
 app.get('/lectureList', function(req,res) {
     console.log("retrrieving lectures");
-    db.select().table('adminlectures')
+    db.select().table('lectures')
     .then(ar => {
-        console.log('admin lectures table: ' + ar);
+        console.log('lectures table: ' + ar);
         res.json(ar);
     });
 });
 
+app.get('/getLecture', function(req, res) {
+    console.log('getting specific lecture');
+    console.log('props: ' + Object.getOwnPropertyNames(req.body));
+    console.log('id: ' + req.body.id);
+    /*
+    db.select().table('lectures')
+    .where({
+        id: req.body.id
+    })
+    .then(ar => {
+        console.log('returning lecture: ' + ar);
+        res.json(ar);
+    })*/
+});
+
 app.get('/adminLectureList/:lectureId', function(req, res) {
-    
+
 });
 
 app.get('/lectureList/:lectureId', function(req, res) {
+    console.log('params:' + req.params)
+    const id = req.params.lectureId
+    console.log('id: ' + id);
     console.log('getting lecture from student side');
-    //db.select().table('adminlectures')
+    db.select().table('lectures')
+    .where({
+        id:id
+    })
+    .then(ar => {
+        console.log('returning lecture: ' + ar);
+        res.json(ar);
+    })
 });
 
 app.post('/newLecture', function(req, res) {

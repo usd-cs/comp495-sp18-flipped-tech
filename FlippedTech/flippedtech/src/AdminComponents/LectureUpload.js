@@ -1,5 +1,11 @@
 import React, {Component} from 'react';
 
+/*
+1	Limit Defintion of the Derivative
+2	Derivatives 1.0: The Power Rule
+3	Derivatives 2.0: The Chain Rule
+4	Derivative 3.0: Trig, Exponential, and Logs
+*/
 class LectureUpload extends React.Component {
 	constructor(props) {
 		super(props);
@@ -19,7 +25,11 @@ class LectureUpload extends React.Component {
 		fetch('/newLecture', {
 	      headers: {'Content-Type': 'application/json'},
 	      method: 'post',
-	      body: JSON.stringify({title:this.state.lecture})
+	      body: JSON.stringify({title:this.state.lecture,
+	      	course:this.state.course,
+	      	videolink: this.state.videolink,
+	      	description:this.state.description
+	      })
 	    })
 	    .then(response => {
 	      return response.text()
