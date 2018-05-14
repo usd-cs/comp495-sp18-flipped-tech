@@ -10,43 +10,18 @@ class AdminLectureBox extends Component {
     }
   }
 
-  componentDidMount = () => {
-    console.log('did mounting');
-    fetch("/adminLectureList")
-      .then(response => {
-        return response.text();
-      })
-      .then(data => {
-        console.log('data: ' + data);
-        const dataList = JSON.parse(data);
-        console.log('datalist: ' + dataList);
-        const userList = dataList.map( (userObj) => {
-          console.log('id: ' + userObj.id);
-          console.log("title: " + userObj.title);
-          return {id: userObj.id, title: userObj.title}
-        });
-        console.log('userList: ' + userList);
-        this.setState({lecturelist: userList});
-      })
-      .catch(error => console.log(error))
-  }
-
-  componentWillMount = () => {
-    console.log('will mount');
-  }
-
-  componentDidUpdate = () => {
-    console.log('updated');
-  }
-
   render() {
+    const lectures = this.props.lecturelist
+    console.log('lectures: ' + lectures);
     return(
       <div>
         <h1 className='ma3 underline'>Lectures</h1>
         <div>
-          {this.state.lecturelist.map(function(lecture) {
+          {lectures.map(function(lecture) {
+            const index = lectures.findIndex(el => el.id == lecture.id) + 1;
+
             return (
-              <Lecture id={lecture.id} title={lecture.title}>
+              <Lecture id={index} title={lecture.title}>
               </Lecture>
             );
             })

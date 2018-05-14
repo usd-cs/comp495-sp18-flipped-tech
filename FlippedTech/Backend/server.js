@@ -71,17 +71,71 @@ db.insert([
 //req and res found as paramters are typicala names for routes and their actions
 //req is for request and is used when info is being submitted through a page
 //res is a response and is used when responding and routing to a page
-app.get('/adminLectureList', function(req,res) {
-    console.log("retrrieving admin lectures");
-    db.select().table('adminlectures')
+app.get('/lectureList', function(req,res) {
+    console.log("retrrieving lectures");
+    db.select().table('lectures')
     .then(ar => {
-        console.log('admin lectures table adding: ' + ar);
+        console.log('lectures table: ' + ar);
         res.json(ar);
     });
 });
 
+app.get('/getLecture', function(req, res) {
+    console.log('getting specific lecture');
+    console.log('props: ' + Object.getOwnPropertyNames(req.body));
+    console.log('id: ' + req.body.id);
+    /*
+    db.select().table('lectures')
+    .where({
+        id: req.body.id
+    })
+    .then(ar => {
+        console.log('returning lecture: ' + ar);
+        res.json(ar);
+    })*/
+});
+
 app.get('/adminLectureList/:lectureId', function(req, res) {
-    
+
+});
+
+app.get('/lectureList/:lectureId', function(req, res) {
+    console.log('params:' + req.params)
+    const id = req.params.lectureId
+    console.log('id: ' + id);
+    console.log('getting lecture from student side');
+    db.select().table('lectures')
+    .where({
+        id:id
+    })
+    .then(ar => {
+        console.log('returning lecture: ' + ar);
+        res.json(ar);
+    })
+});
+
+app.post('/newLecture', function(req, res) {
+    console.log('adding new lecture');
+    const id = req.body.id;
+    const title = req.body.title;
+    const course = req.body.course;
+    const youtubelink = req.body.youtubelink;
+    const description = req.body.description;
+    console.log('title: ' + title);
+    console.log('id: ' + id);
+    console.log('course: ' + course);
+    console.log('youtubelink: ' + youtubelink);
+    console.log('description: ' + description);
+    db('lectures').insert({
+        id: id,
+        title: title,
+        course: course,
+        youtubelink: youtubelink,
+        description: description
+    })
+    .then(ar => {
+        console.log('ar: ' + ar);
+    })
 });
 
 app.get("/testLecture", function(req, res){

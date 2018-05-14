@@ -25,15 +25,15 @@ class CommentBox extends Component {
         //console.log("data: " + data);
         //this.setState({commentlist: []});
         const dataList = JSON.parse(data);
-        console.log('datalist: ' + dataList);
+        //console.log('datalist: ' + dataList);
         const userList = dataList.map( (userObj) => {
           const author = userObj.username;
           const text = userObj.comment
-          console.log('author: ' + author + '  text: ' + text);
+          //console.log('author: ' + author + '  text: ' + text);
           return {author: author, text: text}
         });
         //console.log('userList: ' + userList[0].author);
-        console.log('length: '+ userList.length)
+        //console.log('length: '+ userList.length)
         //console.log("comment: " + user.comment);
         //const ar = [{author: user.username, text: user.comment}];
         //ar.push("jadjlksajdlkasjd");

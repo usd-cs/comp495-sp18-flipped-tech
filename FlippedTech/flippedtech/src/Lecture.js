@@ -1,17 +1,25 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { NavLink } from 'react-router-dom'
 
-const Lecture = (props) => {
-  return (
-    <div>
-      <NavLink to='/testLecture' className=''>
-        Lecture #{props.lectureNumber}
-      </NavLink>
-      <h3>
-        Title: {props.lectureTitle}
-      </h3>
-    </div>
-  );
+class Lecture extends Component {
+  onClick = () => {
+    this.props.onClick(this.props.id);
+  };
+
+  render() {
+    return (
+      <div>
+        <span>
+          <h1 className='dib ma3'>{this.props.id}.</h1>
+            <NavLink to={'/lectureList/'+this.props.id}
+                  className='no-underline f3 lh-copy'
+              >
+                   {this.props.title}
+            </NavLink>
+          </span>
+      </div>
+    );
+  }
 }
 
 export default Lecture;
