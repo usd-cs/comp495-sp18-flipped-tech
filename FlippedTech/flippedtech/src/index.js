@@ -14,6 +14,7 @@ import LecturePage from './LecturePage'
 import AdminHomePage from './AdminComponents/AdminHomePage';
 import AdminLectureListPage from './AdminComponents/AdminLectureListPage';
 import AdminLectureUploadPage from './AdminComponents/AdminLectureUploadPage'
+import AdminLecturePage from './AdminComponents/AdminLecturePage'
 
 import { BrowserRouter, Route, Switch} from 'react-router-dom'
 import registerServiceWorker from './registerServiceWorker';
@@ -34,7 +35,7 @@ ReactDOM.render(
 			<Route exact path='/lectureUploadPage' component={AdminLectureUploadPage}/>
 
 			<Route exact path='/lectureList/:id' component={LecturePage}/>
-			<Route path='/adminlectureList/' component={TestLecturePage}/>
+			<Route path='/adminlectureList/:id' component={AdminLecturePage}/>
 		</Switch>
 	</BrowserRouter>
 	, document.getElementById('root'));

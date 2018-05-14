@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Redirect} from 'react-router';
 
 /*
 1	Limit Defintion of the Derivative
@@ -16,26 +17,28 @@ class LectureUpload extends React.Component {
 			description: '',
 			date: '',
 			time: '',
-			AMorPM: ''
+			AMorPM: '',
+			submit: false
 		}
 	}
 
 	submitLecture = () => {
-		console.log('ahhh');
 		fetch('/newLecture', {
 	      headers: {'Content-Type': 'application/json'},
 	      method: 'post',
-	      body: JSON.stringify({title:this.state.lecture,
-	      	course:this.state.course,
-	      	videolink: this.state.videolink,
-	      	description:this.state.description
+	      body: JSON.stringify({
+	      	id: this.props.length+1,
+	      	title: this.state.lecture,
+	      	course: this.state.course,
+	      	youtubelink: this.state.videolink,
+	      	description: this.state.description
 	      })
 	    })
 	    .then(response => {
 	      return response.text()
 	    })
 	    .then(data => {
-	      fetch('/adminLectureListPage');
+	      console.log('submitted')
 	    })
 	};
 
@@ -44,36 +47,18 @@ class LectureUpload extends React.Component {
 		console.log('changed');
 	};
 
-	empty = () => {
-		if(this.state.lecture === '')
-			return false;
-		else if(this.state.course === '')
-			return false;
-		else if(this.state.videolink === '')
-			return false;
-		else if(this.state.description === '')
-			return false;
-		else if(this.state.date === '')
-			return false;
-		else if(this.state.time === '')
-			return false;
-		else if(this.state.AMorPM === '')
-			return false;
-		else 
-			return true;
-	};
-
 	handleSubmit = (event) => {
-		alert('in handle submit');
+		//alert('in handle submit');
 		event.preventDefault();
-	    if(!this.empty()){
-	      this.submitLecture();
-	    }
-	    else
-	      alert('Empty sections are not allowed');
+	    this.submitLecture();
+	    this.setState({submit: true})
 	};
 
 	render() {
+		//console.log('length: ' + this.props.length);
+		if(this.state.submit === true)
+			return <Redirect to='/adminLectures' />
+
 		return (
 			<form onSubmit={this.handleSubmit}>
 		        <br/>Name of Lecture:<br/>
@@ -81,7 +66,7 @@ class LectureUpload extends React.Component {
 				<br/>Name of Course:<br/>
 				<input type="text" name="course" value={this.state.course} required onChange={this.handleChange} />
 				<br/>Link to Lecture Video(must be valid youtube url):<br/>
-				<input type="url" name="videolink" size="35" value={this.state.videolink} required pattern="http://www\.youtube\.com\/(.+)|https://www\.youtube\.com\/(.+)" onChange={this.handleChange} />
+				<input type="text" name="videolink" size="35" value={this.state.videolink} required pattern="http://www\.youtube\.com\/(.+)|https://www\.youtube\.com\/(.+)" onChange={this.handleChange} />
 				<br/>Description of Lecture:<br/>
 				<textarea name="description" cols="90" rows="5" value={this.state.description} required="required" onChange={this.handleChange} ></textarea>
 				<br/>Date to Make Available(MM/DD/YYYY):<br/>

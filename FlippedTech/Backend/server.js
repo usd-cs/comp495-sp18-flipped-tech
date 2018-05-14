@@ -116,11 +116,22 @@ app.get('/lectureList/:lectureId', function(req, res) {
 
 app.post('/newLecture', function(req, res) {
     console.log('adding new lecture');
+    const id = req.body.id;
     const title = req.body.title;
+    const course = req.body.course;
+    const youtubelink = req.body.youtubelink;
+    const description = req.body.description;
     console.log('title: ' + title);
-    db('adminlectures').insert({
-        id: 6,
-        title: title
+    console.log('id: ' + id);
+    console.log('course: ' + course);
+    console.log('youtubelink: ' + youtubelink);
+    console.log('description: ' + description);
+    db('lectures').insert({
+        id: id,
+        title: title,
+        course: course,
+        youtubelink: youtubelink,
+        description: description
     })
     .then(ar => {
         console.log('ar: ' + ar);

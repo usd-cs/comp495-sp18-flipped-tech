@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import YoutubeVideo from './YoutubeVideo';
-import Banner from './Banner'
-import CommentBox from './components/Comments/CommentBox';
+import YoutubeVideo from '../YoutubeVideo';
+import AdminBanner from './AdminBanner'
+import CommentBox from '../components/Comments/CommentBox';
 
 //Global to hold the youtube link of chosen lecture
 //I think this is bad practice because this should be set within setState()
@@ -10,7 +10,7 @@ import CommentBox from './components/Comments/CommentBox';
 //the callback closure function does not.
 var ylink = ''
 
-class Lecture extends Component{
+class AdminLecture extends Component{
   constructor(props){
     super(props);
     this.state = {
@@ -63,7 +63,7 @@ class Lecture extends Component{
     //console.log('link: ' + ylink)
     return (
       <div>
-        <Banner/>
+        <AdminBanner/>
         <h1 className='tc'>{this.state.title}</h1>
         <YoutubeVideo link={ylink} />
         <h3 className='tc'>{this.state.description}</h3>
@@ -73,4 +73,4 @@ class Lecture extends Component{
   }
 }
 
-export default Lecture;
+export default AdminLecture;
