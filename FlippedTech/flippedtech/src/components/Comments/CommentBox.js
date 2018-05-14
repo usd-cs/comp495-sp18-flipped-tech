@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CommentForm from './CommentForm';
 import CommentList from './CommentList';
 import 'tachyons';
+import './cssComments/myBox.css'
 
 class CommentBox extends Component {
   //constructor applies necessary data to the component
@@ -69,12 +70,14 @@ class CommentBox extends Component {
 
 	render() {
  		return(
- 			<div className='b--solid tc'>
- 				<h1>Comment Box</h1>
- 				<CommentList lists = {this.state.commentlist}></CommentList>
- 				<h1></h1>
- 				<CommentForm handler = {this.addComment} />
- 			</div>
+			 			<div className='b--solid tc container'>
+			 				<h1>Comment Box</h1>
+							<div class="myBox center">
+			 				<CommentList lists = {this.state.commentlist}></CommentList>
+			 				<h1></h1>
+							</div>
+			 				<CommentForm handler = {this.addComment} />
+			 			</div>
    	);
 	}
 }
