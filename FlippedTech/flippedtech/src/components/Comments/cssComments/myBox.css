@@ -7,6 +7,12 @@ height: 150px;
 overflow: scroll;
 }
 
+.center {
+    margin: auto;
+    width: 90%;
+    padding: 10px;
+}
+
 /* Scrollbar styles */
 ::-webkit-scrollbar {
 width: 12px;

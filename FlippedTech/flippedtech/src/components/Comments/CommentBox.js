@@ -72,7 +72,7 @@ class CommentBox extends Component {
  		return(
 			 			<div className='b--solid tc container'>
 			 				<h1>Comment Box</h1>
-							<div class="myBox">
+							<div class="myBox center">
 			 				<CommentList lists = {this.state.commentlist}></CommentList>
 			 				<h1></h1>
 							</div>
