@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Redirect} from 'react-router';
+import LectureBorder from './LectureBorder'
 import DatePicker from 'react-datepicker';
 import TimePicker from 'rc-time-picker';
 import moment from 'moment';
@@ -78,27 +79,37 @@ class LectureUpload extends React.Component {
 			return <Redirect to='/adminLectures' />
 
 		return (
-			<form onSubmit={this.handleSubmit}>
-		        <br/>Name of Lecture:<br/>
-				<input type="text" name="lecture" value={this.state.lecture} required onChange={this.handleChange}/>
-				<br/>Name of Course:<br/>
-				<input type="text" name="course" value={this.state.course} required onChange={this.handleChange} />
-				<br/>Link to Lecture Video(must be valid youtube url):<br/>
-				<input type="text" name="videolink" size="35" value={this.state.videolink} required pattern="http://www\.youtube\.com\/(.+)|https://www\.youtube\.com\/(.+)" onChange={this.handleChange} />
-				<br/>Description of Lecture:<br/>
-				<textarea name="description" cols="90" rows="5" value={this.state.description} required="required" onChange={this.handleChange} ></textarea>
-				<br/>Date to Make Available:<br/>
+			<div>
+				<br />
 				<div>
-					<DatePicker selected={this.state.date} onChange={this.handleDateChange} dateFormat="LL" />
+					<LectureBorder />
 				</div>
-				<br/>Time to Make Available:<br/>
-				<div>
-					<TimePicker value={this.state.time} onChange={this.handleTimeChange} showSecond={false} allowEmpty={false} format="h:mm a" use12Hours />
+				<div className="flex flex-column justify-center items-center">
+					<form onSubmit={this.handleSubmit}>
+					<br/>Name of Lecture:<br/>
+						<input type="text" name="lecture" value={this.state.lecture} required onChange={this.handleChange}/>
+						<br/>Name of Course:<br/>
+						<input type="text" name="course" value={this.state.course} required onChange={this.handleChange} />
+						<br/>Link to Lecture Video(must be valid youtube url):<br/>
+						<input type="text" name="videolink" size="35" value={this.state.videolink} required pattern="http://www\.youtube\.com\/(.+)|https://www\.youtube\.com\/(.+)" onChange={this.handleChange} />
+						<br/>Description of Lecture:<br/>
+						<textarea name="description" cols="90" rows="5" value={this.state.description} required="required" onChange={this.handleChange} ></textarea>
+						<br/>Date to Make Available:<br/>
+						<div>
+							<DatePicker selected={this.state.date} onChange={this.handleDateChange} dateFormat="LL" />
+						</div>
+						<br/>Time to Make Available:<br/>
+						<div>
+							<TimePicker value={this.state.time} onChange={this.handleTimeChange} showSecond={false} allowEmpty={false} format="h:mm a" use12Hours />
+						</div>
+						<br/>
+						<br/>
+						<div className="flex flex-column justify-center items-center">
+							<input type="submit" className="link br2 bg-blue white dim pa3 f6 sans-serif b--blue ba" value="Submit"/>
+						</div>
+					</form>
 				</div>
-				<br/>
-				<br/>
-				<input type="submit" value="Submit"/>
-	      	</form>
+			</div>
 		);
 	}
 }

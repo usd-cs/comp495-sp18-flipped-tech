@@ -11,7 +11,7 @@ class AdminLectureListPage extends Component {
 	      lecturelist: []
 	    }
 	};
-	
+
 	componentDidMount = () => {
 		fetch("/lectureList")
 		.then(response => {
@@ -31,7 +31,6 @@ class AdminLectureListPage extends Component {
 		return (
 			<div>
 				<AdminBanner />
-				<h1>Video Lecture Upload</h1>
 				<LectureUpload length={this.state.lecturelist.length}/>
 			</div>
 		);
