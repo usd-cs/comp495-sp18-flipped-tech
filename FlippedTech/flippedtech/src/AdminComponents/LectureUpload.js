@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Redirect} from 'react-router';
+import LectureBorder from './LectureBorder'
 import DatePicker from 'react-datepicker';
 import TimePicker from 'rc-time-picker';
 import moment from 'moment';
