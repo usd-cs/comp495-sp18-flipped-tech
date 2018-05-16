@@ -1,5 +1,5 @@
 import React from 'react';
-import './css/LectureUpload.css'
+import './LectureUpload.css'
 
 const LectureBorder = (props) => {
 	return (
